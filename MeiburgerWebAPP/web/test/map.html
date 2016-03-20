@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../js/jquery.js" type="text/javascript"></script>
+        <script>
+            $(document).on("click", "#geocoder_button", geocoderHandle);
+            function geocoderHandle(){
+//                aleart("geocoder" + $("#address_field").val());
+                $.ajax(
+                        {
+                            url:"http://maps.googleapis.com/maps/api/geocode/json?address=" + $("#address_field").val()
+                        }      
+                ).done(doneHandler);
+            }
+            function doneHandler(json){
+                alert(json.results[0].geometry.location.lat + "," + json.results[0].geometry.location.lng);
+            }
+            
+            $(document).on("click", "#address_button", addressHandle);
+            function addressHandle(){
+                $.ajax(
+                        {
+                            url:"http://maps.googleapis.com/maps/api/geocode/json?latlng=" + $("#lat_field").val() + "," + $("#lng_field").val()
+                        }      
+                ).done(done1Handler);
+        
+            function done1Handler(json){
+                alert(json.results[0].formatted_address);
+                
+            }
+        }
+        </script>
+    </head>
+    <body>
+        <input type="text" id="address" placeholder="請輸入地址">
+        <input type="button" value="查詢經緯度" id="geocoder_button">
+        
+         <input type="text" id="lat_field" placeholder="請輸入緯度">
+         <input type="text" id="lng_field" placeholder="請輸入經度">
+        <input type="button" value="查詢地址" id="address_button">
+        
+    </body>
+</html>

@@ -1,0 +1,11 @@
+{
+    "attributes": {
+        "minlength": {
+            "context": "input"
+        },
+        "typt": {
+            "context": "input"
+        }
+    },
+    "elements": {}
+}
