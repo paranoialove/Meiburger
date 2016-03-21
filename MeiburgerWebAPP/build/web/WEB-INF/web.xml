@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+    <context-param>
+        <param-name>app-name</param-name>
+        <param-value>MeiBurger</param-value>
+    </context-param>
+    <context-param>
+        <param-name>charset</param-name>
+        <param-value>big5</param-value>
+    </context-param>
+    
+    
+    <servlet>
+        <servlet-name>HelloServletTW</servlet-name>
+        <servlet-class>uuu.meiburger.view.HelloServlet</servlet-class>         
+        <init-param>
+            <param-name>welcome</param-name>
+            <param-value>歡迎</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HelloServletTW</servlet-name>
+        <url-pattern>/zh-tw/hello.view</url-pattern>
+        <url-pattern>/zh-tw/hello.asp</url-pattern>
+        <url-pattern>/zh-tw/hello.php</url-pattern>
+    </servlet-mapping>
+    
+    
+    <servlet>
+        <servlet-name>HelloServletUS</servlet-name>
+        <servlet-class>uuu.meiburger.view.HelloServlet</servlet-class>         
+        <init-param>
+            <param-name>welcome</param-name>
+            <param-value>welcome</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HelloServletUS</servlet-name>
+        <url-pattern>/en-us/hello.view</url-pattern>
+        <url-pattern>/en-us/hello.asp</url-pattern>
+        <url-pattern>/en-us/hello.php</url-pattern>
+    </servlet-mapping>
+    
+    
+    
+    <session-config>    
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>

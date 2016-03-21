@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Meiburger register</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript">
+            function refresh() {
+                var image = document.getElementById("checkcodepic");
+                image.src = "img/check_code.jpg?get=" + new Date();
+            }
+        </script>
+
+
+        <!----------------------------- header style 開始-------------------------------Javay-->
+        <style type="text/css">
+            #header{
+                float: left;
+                background-color:#ffcccc;
+                text-align:center;
+                width:100%;
+                margin:0 auto;
+                _margin:0px auto;
+                *margin:0px auto;
+            }
+            #logo{
+                text-align:center;
+                margin:0 auto;
+                _margin:0px auto;
+                *margin:0px auto;
+            }
+            #loginblock{
+                text-align:right;
+            }
+            #logo{
+                width: 307px
+            }
+        </style>
+        <!----------------------------- header style 結束-------------------------------Javay-->
+        <!----------------------------- BODY 主要style 開始--------------------------Javay-->
+        <style type="text/css">            
+            #main {
+                width: 100%;
+                display:inline-block;
+                margin:0 auto;
+                text-align:center;
+                padding-bottom: 100px;
+            }
+            #sidebar{
+                float:left;
+                width:20%;  
+                height:80%;
+                margin:0px 0px;
+                text-align: center;
+            }
+            #sidebar ul{
+                padding-left: 0px;
+                list-style-type:none;
+            }
+            #content{
+
+                float:right;
+                margin: 0px 0px;
+                width:70%;
+                height: 80%;            
+            }
+            #content h2{
+                background: brown;
+                opacity: 0.8;
+            }
+        </style>
+        <!------------------------BODY 主要style 結束-------------------------------Javay-->
+        <!---------------------- BODY 本頁特有元素 style 開始-------------------Javay-->
+        <style type="text/css"> 
+            #content form{
+                float: left;
+            }
+        </style>
+        <!--------------------- BODY 本頁特有元素 style 結束-------------------Javay-->
+        <!----------------------------- footer 主要style 開始--------------------------Javay-->
+        <style type="text/css"> 
+            #footer {
+                height: 100px;
+                position: relative;
+                margin-top: -100px;
+            }
+        </style>
+        <!----------------------------- footer 主要style 結束------------------------Javay-->
+    </head>
+    <body>
+        <div id="header">
+
+        </div>
+        
+        <div id="main">
+            <div id="sidebar">
+                <div id="sidebartitle"><h2>側邊欄</h2></div>
+                <ul>
+                    <li><img src="#" title="側邊欄" alt="側邊欄" /></li>
+                    <li><img src="#" title="側邊欄" alt="側邊欄" /></li>
+                    <li><img src="#" title="側邊欄" alt="側邊欄" /></li>
+                    <li><img src="#" title="側邊欄" alt="側邊欄" /></li>
+                </ul>
+            </div>
+            <div id="content">                
+                <h2>登入</h2>
+                <form method="POST" action="register.do">
+                    <p><label for="userid">帳號</label><input type="text" id="userid" name="id" placeholder="請輸入帳號" required/></p>
+                    <p><label for="username">姓名</label><input type="text" id="username" name="username" placeholder="請輸入姓名" required/></p>          
+                    <p><label for="email">email</label><input type="text" id="email" name="email" placeholder="請輸入email" required/></p>
+                    <p><label>性別</label>
+                        <input type="radio" id="male" name="gender" value="M" /><label for="male" >男</label>
+                        <input type="radio" id="female" name="gender" value="F" /><label for="female">女</label>
+                    </p>
+                    <p><label for="userpw">密碼 </label><input type="password" id="userpw" name="pw" placeholder="請輸入密碼" minlength="6" maxlength="20"  required/></p>
+                    <p><label for="userpwck">　　 </label><input type="password" id="userpwck" name="pwck" placeholder="請再次輸入密碼" required/></p>
+                    <label for="checkCode">檢核碼</label> 
+                    <p><img id="checkcodepic" src="img/check_code.jpg" alt="檢核圖片" /><br>
+                    <input type="button" value="更新" name="updatecode" id="updatecode" onclick="refresh()"/>
+                    <input type="text" id="checkCode" name="checkcode" placeholder="請輸入檢核碼" required /></p>
+                    <input type=submit value="確定" />            
+                </form>
+            </div>
+        </div>
+        
+        <div id="footer"></div>
+    </body>
+</html>
