@@ -1,10 +1,10 @@
-package org.apache.jsp;
+package org.apache.jsp.test;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class hello_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class _99_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -30,7 +30,7 @@ public final class hello_jsp extends org.apache.jasper.runtime.HttpJspBase
     PageContext _jspx_page_context = null;
 
     try {
-      response.setContentType("text/html;charset=utf-8");
+      response.setContentType("text/html;charset=UTF-8");
       pageContext = _jspxFactory.getPageContext(this, request, response,
       			null, true, 8192, true);
       _jspx_page_context = pageContext;
@@ -42,30 +42,37 @@ public final class hello_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
       out.write("\n");
+      out.write("\n");
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
-      out.write("<!--\n");
-      out.write("To change this license header, choose License Headers in Project Properties.\n");
-      out.write("To change this template file, choose Tools | Templates\n");
-      out.write("and open the template in the editor.\n");
-      out.write("-->\n");
       out.write("<html>\n");
       out.write("    <head>\n");
-      out.write("        <title>TODO supply a title</title>\n");
-      out.write("        <meta charset=\"UTF-8\">\n");
-      out.write("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n");
+      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
+      out.write("        <title>九九乘法表</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        <h1>TODO write content</h1>\n");
-      out.write("        <p>現在時間：</p><p>  ");
-      out.print(new java.util.Date() );
-      out.write("  </p>\n");
-      out.write("        <p>Browser");
-      out.print(request.getHeader("user-agent") );
-      out.write("</p>\n");
-      out.write("        <p>");
-      out.print(request.getContextPath() );
-      out.write("   </p>\n");
+      out.write("        <h1>九九乘法表</h1>\n");
       out.write("        \n");
+      out.write("<table border=\"1\">\n");
+      out.write("<script>\n");
+      out.write("\n");
+      out.write("for(var i=0;i<3;i++)\n");
+      out.write("{\n");
+      out.write("    document.write(\"<tr>\");\n");
+      out.write("    for(var j=1;j<10;j++)\n");
+      out.write("    {\n");
+      out.write("        \n");
+      out.write("        for(var k=3*i+1;k<=3*i+3;k++)\n");
+      out.write("        {        \n");
+      out.write("        document.write(\"<td>\"+k+\"*\"+j+\"=\"+k*j+\"</td>\");\n");
+      out.write("        }\n");
+      out.write("        document.write(\"<tr><tr>\");\n");
+      out.write("    \n");
+      out.write("    }\n");
+      out.write("    document.write(\"<tr>\");\n");
+      out.write("}\n");
+      out.write("</script>\n");
+      out.write("</table>\n");
       out.write("        \n");
       out.write("        \n");
       out.write("    </body>\n");

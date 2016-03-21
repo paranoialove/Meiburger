@@ -13,9 +13,11 @@ and open the template in the editor.
     </head>
     <body>
         <h1>TODO write content</h1>
-        <p>現在時間：</p><p>  <%=new java.util.Date() %>  </p>
-        <p>Browser<%= request.getHeader("user-agent") %></p>
-        
-        
+        <p>現在時間：</p><p>  <%=new java.util.Date()%>  </p>
+        <p>Browser<%=request.getHeader("user-agent")%></p>
+        <p><%=request.getContextPath()%>   </p>
+        <p>
+            </p>
+
     </body>
 </html>
