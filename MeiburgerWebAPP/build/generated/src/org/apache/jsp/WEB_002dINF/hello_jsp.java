@@ -1,4 +1,4 @@
-package org.apache.jsp;
+package org.apache.jsp.WEB_002dINF;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -7,6 +7,23 @@ import javax.servlet.jsp.*;
 public final class hello_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
+  //宣告類別屬性 
+            private int i = 100000;
+            private String welcome = "Hello~~~" ;
+
+            public void jspInit() {
+                
+                System.out.println(this.getServletName() + "created...");
+                String welcome = this.getInitParameter("welcome");
+                if (welcome != null) {
+                    this.welcome = welcome;
+                }
+            }
+
+            public void jspDestroy() {
+                System.out.println(this.getServletName() + " has been destroyed");
+            }
+        
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
 
   private static java.util.List<String> _jspx_dependants;
@@ -55,19 +72,43 @@ public final class hello_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        <h1>TODO write content</h1>\n");
+      out.write("        ");
+      out.write("       \n");
+      out.write("        ");
+ //方法內的區域變數
+            int i = 10;
+        
+      out.write("\n");
+      out.write("        ");
+ //out.println(this.i); 
+      out.write("<br>        \n");
+      out.write("        ");
+ //out.println(i);
+      out.write("\n");
+      out.write("\n");
+      out.write("        <h1>");
+      out.print( this.welcome);
+      out.write(' ');
+      out.print( this.getServletName() );
+      out.write(' ');
+      out.print( request.getContextPath() );
+      out.write("</h1>\n");
       out.write("        <p>現在時間：</p><p>  ");
-      out.print(new java.util.Date() );
+      out.print(new java.util.Date());
       out.write("  </p>\n");
       out.write("        <p>Browser");
-      out.print(request.getHeader("user-agent") );
+      out.print(request.getHeader("user-agent"));
       out.write("</p>\n");
-      out.write("        <p>");
-      out.print(request.getContextPath() );
+      out.write("        <p>屬性i:");
+      out.print( this.i);
+      out.write("</p>\n");
+      out.write("        <p>區域變數i:");
+      out.print( i);
       out.write("   </p>\n");
-      out.write("        \n");
-      out.write("        \n");
-      out.write("        \n");
+      out.write("\n");
+      out.write("        <p>\n");
+      out.write("        </p>\n");
+      out.write("\n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {
