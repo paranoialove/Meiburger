@@ -91,11 +91,10 @@ and open the template in the editor.
         <hr>
         <table>
             <tr><th>NAME</th><th>VALUE</th></tr>
-            <tr><td>config getInitParameter</td><td><%= config.getInitParameter("welcome") %></td></tr>
-            <tr><td>直接抓this</td><td><%= this.getInitParameter("welcome") %></td></tr>
-          
+            <tr><td>config getInitParameter</td><td><%= config.getInitParameter("welcome")%></td></tr>
+            <tr><td>直接抓this</td><td><%= this.getInitParameter("welcome")%></td></tr>
         </table>
 
-
+        <hr>
     </body>
 </html>
