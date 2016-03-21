@@ -20,7 +20,8 @@ public class TestCustomer {
 
     public static void main(String[] args) {
         try {
-            Customer c = new Customer("A123456789", "張三", 'M', "123456", "three.chang@gmail.com");
+            Customer c = new Customer("A123456789", "張三", "123456", "three.chang@gmail.com");
+            //'M'
             /* class作為參考型別，以及其成員變數，
             * 都須新建物件new ***()  //建構子// 出來才能使用。
             * 此為區域變數(於方法內)
@@ -57,7 +58,6 @@ public class TestCustomer {
             System.out.println("c.birthday = " + c.getBirthday());
             System.out.println("c.phone = " + c.getPhone());
             System.out.println("c.address = " + c.getAddress());
-            System.out.println("c.married = " + c.isMarried());
             System.out.println("c.status = " + c.getStatus());
             System.out.println("c.getAge = " + c.getAge());
             System.out.println(c);//

@@ -17,7 +17,7 @@ import uuu.meiburger.domain.MeiException;
 public class TestFinalCustomer {
     public static void main(String[] args) {
         try {
-            final Customer c = new Customer("A123456789", "Tom", "123456");
+            final Customer c = new Customer("A123456789", "Tom", "123456", "123@uuu.com.tw");
             System.out.println("c.getId() = " + c.getId());
             
             c.setId("A123456770");

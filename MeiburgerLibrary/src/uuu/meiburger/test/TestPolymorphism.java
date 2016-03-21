@@ -39,10 +39,10 @@ public class TestPolymorphism {
             o = new Date();//polymorphism
             System.out.println(o.toString());
 
-            o = new Customer("A123456789", "John", "123456");
+            o = new Customer("A123456789", "John", "123456","uuu@uuu.com.tw");
             System.out.println(o.getClass().getName());
 
-            Customer c = new VIP("A223456781", "MARY", "123456");
+            Customer c = new VIP("A223456781", "MARY", "123456","uuu@uuu.com.tw");
             System.out.println(c.getId());
 //System.out.println(c.getDiscount());  上層型別call不到下層型別的方法
             System.out.println(c.toString());

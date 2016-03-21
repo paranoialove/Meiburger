@@ -22,8 +22,8 @@ public class TestOrderService {
 
     public static void main(String[] args) {
         try {
-            Customer c = new Customer("A123456789", "張三", "123456");
-            VIP v = new VIP("A223456781", "Linda", "123456");
+            Customer c = new Customer("A123456789", "張三", "123456", "123@uuu.com.tw");
+            VIP v = new VIP("A223456781", "Linda", "123456", "uuu@uuu.com.tw");
             
             Product p = new Product(1, "全麥麵包", 100);
             Product p2 = new Product(3, "蘋果", 60);

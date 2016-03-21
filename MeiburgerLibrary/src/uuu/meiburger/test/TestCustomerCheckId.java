@@ -16,7 +16,7 @@ public class TestCustomerCheckId {
     public static void main(String[] args) {
         final Customer c ;
         try{
-            c =  new Customer("A123456787","John", "123456");
+            c =  new Customer("A123456787","John", "123456", "123@uuu.com.tw");
             c.setId("A123456787");     
             System.out.println(c.checkId("A123456789"));
         }catch(MeiException ex){

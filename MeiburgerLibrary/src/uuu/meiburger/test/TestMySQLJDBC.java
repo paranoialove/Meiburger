@@ -53,14 +53,14 @@ public class TestMySQLJDBC {
                         cust.setGender(rs.getString("gender").charAt(0));
                         cust.setEmail(rs.getString("email"));
                         cust.setBirthday(rs.getDate("birthday"));
-                        cust.setPhone(rs.getString("phone"));
+                        cust.setPhone(rs.getInt("phone"));
                         cust.setAddress(rs.getString("address"));
-                        cust.setMarried(rs.getBoolean("married"));
+//                        cust.setMarried(rs.getBoolean("married"));
                         
-                        String bType = rs.getString("blood_type");
-                        if(bType!=null && (bType = bType.trim()).length()>0){   //非null或空字串
-                            cust.setBloodType(BloodType.valueOf(bType));   //valueOf()無法接受null資料，須判斷後再丟進去
-                        }
+//                        String bType = rs.getString("blood_type");
+//                        if(bType!=null && (bType = bType.trim()).length()>0){   //非null或空字串
+//                            cust.setBloodType(BloodType.valueOf(bType));   //valueOf()無法接受null資料，須判斷後再丟進去
+//                        }
                         System.out.println(cust.toString());
                         
                     } catch (MeiException ex) {

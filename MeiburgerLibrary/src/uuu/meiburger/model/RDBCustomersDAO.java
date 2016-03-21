@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import uuu.meiburger.domain.BloodType;
 import uuu.meiburger.domain.Customer;
 import uuu.meiburger.domain.MeiException;
 import uuu.meiburger.domain.VIP;
@@ -31,7 +30,7 @@ class RDBCustomersDAO {
             + "WHERE id=?";
 
     private static final String DELETE_SQL = "DELETE FROM customers WHERE id=?";
-
+    
     private static final String sqlAll
             = "select * "
             + "from customers ";
@@ -100,13 +99,13 @@ class RDBCustomersDAO {
     }
 
     public void delete(Customer c) throws MeiException {
-        if (c == null) {
+                if (c == null) {
             throw new MeiException("無此客戶，無法刪除");
         }
         //１。載入Driver並建立連線
         try (Connection connection = RDBConnection.getConnection();
                 //２。準備指令
-                PreparedStatement psmt = connection.prepareStatement(DELETE_SQL);) {
+                PreparedStatement psmt = connection.prepareStatement( DELETE_SQL);) {
 
             //３。傳入參數
             psmt.setString(1, c.getId());
@@ -119,23 +118,18 @@ class RDBCustomersDAO {
         }
     }
 
-    private Customer createCustomer(String id, String name, String password, String email, String t) {
-        Customer cust;
+    private Customer createCustomer(String t) throws MeiException {
+        Customer cust = null;
         if ("VIP".equals(t)) {
             cust = new VIP();
         } else {
-            try {
-                cust = new Customer(id, name, password, email);
-            } catch (MeiException ex) {
-                Logger.getLogger(RDBCustomersDAO.class.getName()).log(Level.SEVERE, null, ex);
-                return null;
-            }
+            cust = new Customer();
         }
         return cust;
     }
 
     public Customer get(String id) throws MeiException {
-        Customer cust;
+        Customer cust = null;
         /**
          * ================【步驟1.】 ========================= ＞import JDBC driver
          * class definition ＞在RDBConnection載入driver了。 在下面~~~~
@@ -179,6 +173,7 @@ class RDBCustomersDAO {
                         cust.setBirthday(rs.getDate("birthday"));
                         cust.setPhone(rs.getInt("phone"));
                         cust.setAddress(rs.getString("address"));
+
                     } catch (MeiException ex) {
                         System.out.println(ex);
                         throw new MeiException("查詢客戶建立指派客戶物件資料失敗", ex);
@@ -188,7 +183,6 @@ class RDBCustomersDAO {
         } catch (SQLException ex) {
             Logger.getLogger(TestMySQLJDBC.class.getName()).log(Level.SEVERE, "連線必要資訊錯誤", ex);
             throw new MeiException("無法查詢客戶", ex);
-
         }
 
 //        } catch (ClassNotFoundException ex) {
@@ -199,7 +193,7 @@ class RDBCustomersDAO {
     }
 
     public List<Customer> getAll() throws MeiException {
-        //List<> 為泛型(集合)
+        //List<> 為泛型(集合)  
         List<Customer> customers = new ArrayList<>();
 
         //JDBC 查詢Customer的所有資料

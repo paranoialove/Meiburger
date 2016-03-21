@@ -14,10 +14,10 @@ import uuu.meiburger.domain.Customer;
  */
 public class TestCustomerBloodType {
     public static void main(String[] args) {
-        Customer c = new Customer();
-        c.setBloodType(BloodType.B);
-        
-        System.out.println("c.getBloodType() = " + c.getBloodType());
-        System.out.println("共有" + BloodType.values().length + "個選項" );
+//        Customer c = new Customer();
+//        c.setBloodType(BloodType.B);
+//        
+//        System.out.println("c.getBloodType() = " + c.getBloodType());
+//        System.out.println("共有" + BloodType.values().length + "個選項" );
     }
 }

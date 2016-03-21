@@ -36,8 +36,8 @@ public class TestCustomer2 {
             System.out.println("c1.getGender() = " + c1.getGender());
             System.out.println("c2.getGender() = " + c2.getGender());
             
-            Customer c3 = new Customer("A123456789", "張三", "123456");
-            Customer c4 = new Customer("A123456770", c3.getName(), c3.getPassword());
+            Customer c3 = new Customer("A123456789", "張三", "123456", "233@uuu.com.tw");
+            Customer c4 = new Customer("A123456770", c3.getName(), c3.getPassword(), c3.getEmail());
             
             System.out.println("c3.getName() = " + c3.getName());//張三
             System.out.println("c4.getName() = " + c4.getName());//張三

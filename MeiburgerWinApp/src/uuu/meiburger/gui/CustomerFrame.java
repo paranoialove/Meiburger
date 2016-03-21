@@ -64,9 +64,6 @@ public class CustomerFrame extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         addressField = new javax.swing.JTextField();
         birthdayField = new javax.swing.JFormattedTextField();
-        jLabel9 = new javax.swing.JLabel();
-        bloodtypeComboBox = new javax.swing.JComboBox<>();
-        marriedCheck = new javax.swing.JCheckBox();
         jLabel10 = new javax.swing.JLabel();
         vipCheck = new javax.swing.JCheckBox();
         jLabel11 = new javax.swing.JLabel();
@@ -95,14 +92,14 @@ public class CustomerFrame extends javax.swing.JFrame {
 
             },
             new String [] {
-                "id", "姓名", "性別", "生日", "電話", "email", "血型", "婚姻狀況"
+                "id", "姓名", "性別", "生日", "電話", "email"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -149,12 +146,6 @@ public class CustomerFrame extends javax.swing.JFrame {
 
         birthdayField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
         birthdayField.setText("yyyy/mm/dd");
-
-        jLabel9.setText("血型");
-
-        bloodtypeComboBox.setModel(new javax.swing.DefaultComboBoxModel(uuu.meiburger.domain.BloodType.values()));
-
-        marriedCheck.setText("已婚");
 
         jLabel10.setText("會員等級");
 
@@ -203,15 +194,11 @@ public class CustomerFrame extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addComponent(jLabel4)
                             .addComponent(jLabel6)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9))
+                            .addComponent(jLabel8))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(bloodtypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(marriedCheck)
-                                .addGap(52, 52, 52)
+                                .addGap(148, 148, 148)
                                 .addComponent(jLabel10)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(vipCheck)
@@ -281,9 +268,6 @@ public class CustomerFrame extends javax.swing.JFrame {
                             .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(21, 21, 21)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(jLabel9)
-                            .addComponent(bloodtypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(marriedCheck)
                             .addComponent(jLabel10)
                             .addComponent(vipCheck)
                             .addComponent(jLabel11)
@@ -348,7 +332,7 @@ public class CustomerFrame extends javax.swing.JFrame {
             if (list != null && list.size() > 0) {
                 //將list顯示於table中
                 for (Customer c : list) {
-                    model.addRow(new Object[]{c.getId(), c.getName(), String.valueOf(c.getGender()), c.getBirthday(), c.getPhone(), c.getEmail(), c.getBloodType(), c.isMarried()});
+                    model.addRow(new Object[]{c.getId(), c.getName(), String.valueOf(c.getGender()), c.getBirthday(), c.getPhone(), c.getEmail()});
                 }
 
             }
@@ -383,7 +367,7 @@ public class CustomerFrame extends javax.swing.JFrame {
             c.setGender(femaleRadioButton.isSelected()?Customer.FEMALE:Customer.MALE);
             c.setEmail(emailField.getText());
             c.setBirthday((Date)birthdayField.getValue());
-            c.setBloodType(((BloodType)bloodtypeComboBox.getSelectedItem()));
+//            c.setBloodType(((BloodType)bloodtypeComboBox.getSelectedItem()));
             
             if(c instanceof VIP){
                 Number n = (Number) discountSpinner.getValue();
@@ -408,10 +392,8 @@ public class CustomerFrame extends javax.swing.JFrame {
         passwordField.setText(c.getPassword());
         birthdayField.setValue(c.getBirthday());
         emailField.setText(c.getEmail());
-        phoneField.setText(c.getPhone());
+        phoneField.setText(Integer.toString(c.getPhone()));
         addressField.setText(c.getAddress());
-        bloodtypeComboBox.setSelectedItem(c.getBloodType());
-        marriedCheck.setSelected(c.isMarried());
 
         if (c instanceof VIP) {
             vipCheck.setSelected(true);
@@ -463,7 +445,6 @@ public class CustomerFrame extends javax.swing.JFrame {
     private javax.swing.JButton addButton;
     private javax.swing.JTextField addressField;
     private javax.swing.JFormattedTextField birthdayField;
-    private javax.swing.JComboBox<String> bloodtypeComboBox;
     private javax.swing.JTable customersTable;
     private javax.swing.JButton deleteButton;
     private javax.swing.JSpinner discountSpinner;
@@ -484,13 +465,11 @@ public class CustomerFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JRadioButton maleRadioButton;
-    private javax.swing.JCheckBox marriedCheck;
     private javax.swing.JTextField nameField;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JTextField phoneField;
