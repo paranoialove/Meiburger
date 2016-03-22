@@ -6,7 +6,6 @@
 package uuu.meiburger.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -16,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import uuu.meiburger.domain.Customer;
+import uuu.meiburger.domain.MeiException;
 import uuu.meiburger.model.CustomerService;
 
 /**
@@ -55,7 +55,7 @@ public class RegisterServlet extends HttpServlet {
 
         if (username == null || (username = username.trim()).length() == 0) {
             errorList.add("必須輸入姓名");
-        } 
+        }
 
         if (pw == null || pw.length() <= 0) {
             errorList.add("必須輸入密碼");
@@ -77,7 +77,7 @@ public class RegisterServlet extends HttpServlet {
             //檢查驗證碼
         }
 
-        if (errorList.size() == 0) {
+        if (errorList.size()==0) {
             // 2.執行商業邏輯    
             try {
                 Customer c = new Customer();
@@ -95,31 +95,26 @@ public class RegisterServlet extends HttpServlet {
                 request.setAttribute("customer", c);
                 dispatcher.forward(request, response);
                 return;
-                
-                
-            } catch (Exception e)  {
-                errorList.add(e.toString());
+       
+            } catch (MeiException ex) {
+                //Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("無法註冊，請聯絡系統管理員。" + ex);
+                if (ex.getCause() != null) {
+                    this.log("無法註冊", ex);
+                    errorList.add("無法註冊，請聯絡系統管理員。");
+                } else {
+                    errorList.add(ex.getMessage());
+                }
             }
 
-        }
-
-        //3.2輸出結果 - 失敗
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>註冊失敗</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>註冊失敗 " + errorList + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            //3.2輸出結果 - 失敗
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/register.jsp");
+            request.setAttribute("errors", errorList);
+            dispatcher.forward(request, response);
         }
     }
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
