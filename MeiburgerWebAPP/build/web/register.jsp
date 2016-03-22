@@ -13,66 +13,12 @@
                 image.src = "img/check_code.jpg?get=" + new Date();
             }
         </script>
-
-
-        <!----------------------------- header style 開始-------------------------------Javay-->
-        <style type="text/css">
-            #header{
-                float: left;
-                background-color:#ffcccc;
-                text-align:center;
-                width:100%;
-                margin:0 auto;
-                _margin:0px auto;
-                *margin:0px auto;
-            }
-            #logo{
-                text-align:center;
-                margin:0 auto;
-                _margin:0px auto;
-                *margin:0px auto;
-            }
-            #loginblock{
-                text-align:right;
-            }
-            #logo{
-                width: 307px
-            }
-        </style>
-        <!----------------------------- header style 結束-------------------------------Javay-->
-        <!----------------------------- BODY 主要style 開始--------------------------Javay-->
-        <style type="text/css">            
-            #main {
-                width: 100%;
-                display:inline-block;
-                margin:0 auto;
-                text-align:center;
-                padding-bottom: 100px;
-            }
-            #sidebar{
-                float:left;
-                width:20%;  
-                height:80%;
-                margin:0px 0px;
-                text-align: center;
-            }
-            #sidebar ul{
-                padding-left: 0px;
-                list-style-type:none;
-            }
-            #content{
-
-                float:right;
-                margin: 0px 0px;
-                width:70%;
-                height: 80%;            
-            }
-            #content h2{
-                background: brown;
-                opacity: 0.8;
-            }
-        </style>
-        <!------------------------BODY 主要style 結束-------------------------------Javay-->
+        <!----------------------------- header style --------------------------------->
+        <link href="css/header.css" rel="stylesheet" type="text/css"/>
+        <!----------------------------- BODY 主要style 開始---------------------------->
+        <link href="css/main_body.css" rel="stylesheet" type="text/css"/>
+        <!----------------------------- footer 主要style 開始---------------------------->
+        <link href="css/footer.css" rel="stylesheet" type="text/css"/>     
         <!---------------------- BODY 本頁特有元素 style 開始-------------------Javay-->
         <style type="text/css"> 
             #content form{
@@ -80,19 +26,25 @@
             }
         </style>
         <!--------------------- BODY 本頁特有元素 style 結束-------------------Javay-->
-        <!----------------------------- footer 主要style 開始--------------------------Javay-->
-        <style type="text/css"> 
-            #footer {
-                height: 100px;
-                position: relative;
-                margin-top: -100px;
-            }
-        </style>
-        <!----------------------------- footer 主要style 結束------------------------Javay-->
     </head>
     <body>
         <div id="header">
-
+            <div><img src="img/logo.jpg" title="logo" id="logo" />            </div>
+            <div id ="headertext">
+                <div id ="websitename"><h1>綿堡MonsterBurger</h1></div>
+                <div id ="loginblock">
+                    <a href="login.jsp">登入</a>
+                    <a href="register.jsp">註冊</a>
+                </div>
+                <div id="nav">
+                    <a title="回到首頁" href="<%=application.getContextPath() %>/index.jsp">首頁</a> | 
+                    <a href="<%=application.getContextPath() %>/aboutus.jsp">關於綿堡</a> | 
+                    <a href="<%=application.getContextPath() %>/product.jsp">菜單</a> | 
+                    <a href="<%=application.getContextPath() %>/"></a> | 
+                    <a href="<%=application.getContextPath() %>/member.jsp">食客服務</a> | 
+                    <a href="<%=application.getContextPath() %>/cart.jsp">餐盤</a>
+                    <!--<div id ="subNavOrder" ><a href="#ingredient">特選食材</a> | <a href="#topselect">經典組合</a> | <a href="orderNow">立刻訂製</a></div>-->
+                </div></div>
         </div>
         
         <div id="main">
@@ -106,7 +58,7 @@
                 </ul>
             </div>
             <div id="content">                
-                <h2>登入</h2>
+                <h2>註冊</h2>
                 <form method="POST" action="register.do">
                     <p><label for="userid">帳號</label><input type="text" id="userid" name="id" placeholder="請輸入帳號" required/></p>
                     <p><label for="username">姓名</label><input type="text" id="username" name="username" placeholder="請輸入姓名" required/></p>          
