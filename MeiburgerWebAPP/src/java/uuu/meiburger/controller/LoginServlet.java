@@ -7,7 +7,6 @@ package uuu.meiburger.controller;
 
 import java.util.List;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -100,8 +99,7 @@ public class LoginServlet extends HttpServlet {
         //1.1.2  格式錯誤
         //3.2產生回應 -失敗   
         RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
-        request.setAttribute("errors", errorList);
-        
+        request.setAttribute("errors", errorList);        
         dispatcher.forward(request, response);
 
     }

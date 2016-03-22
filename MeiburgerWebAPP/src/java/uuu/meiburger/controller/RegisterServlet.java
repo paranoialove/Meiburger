@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -90,20 +91,12 @@ public class RegisterServlet extends HttpServlet {
                 service.register(c);
 
                 //3.1輸出結果 - 成功  
-                response.setContentType("text/html;charset=UTF-8");
-                try (PrintWriter out = response.getWriter()) {
-                    /* TODO output your page here. You may use following sample code. */
-                    out.println("<!DOCTYPE html>");
-                    out.println("<html>");
-                    out.println("<head>");
-                    out.println("<title>註冊成功</title>");
-                    out.println("</head>");
-                    out.println("<body>");
-                    out.println("<h1>註冊成功：" + c + "</h1>");
-                    out.println("</body>");
-                    out.println("</html>");
-                }
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/register_ok.jsp");
+                request.setAttribute("customer", c);
+                dispatcher.forward(request, response);
                 return;
+                
+                
             } catch (Exception e)  {
                 errorList.add(e.toString());
             }
