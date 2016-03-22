@@ -6,7 +6,7 @@
 
 <%@page import="java.text.DateFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
-<%@ page errorPage="error.jsp"%>
+<%@ page errorPage="/WEB-INF/error.jsp"%>
 <!DOCTYPE html>
 <html>
     <head>

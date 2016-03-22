@@ -1,3 +1,5 @@
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@ page errorPage="/WEB-INF/error.jsp"%>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.

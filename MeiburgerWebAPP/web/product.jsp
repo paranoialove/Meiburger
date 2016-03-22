@@ -1,8 +1,10 @@
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@ page errorPage="/WEB-INF/error.jsp"%>
 <!DOCTYPE html>
 
 <html>
     <head>
-        <title>Meiburger orderBurger! 1.Flavers/Size</title>
+        <title>Meiburger product</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!----------------------------- header style 開始--------------------------------->
@@ -11,51 +13,23 @@
                 float: left;
                 background-color:#ffcccc;
                 text-align:center;
-                width:95%;
+                width:100%;
                 margin:0 auto;
                 _margin:0px auto;
                 *margin:0px auto;
-                padding:0 0 0 5%;
-                height:200px;
-                max-height:260px;
-                min-height:280px;
-                
-            }
-            #headertext{
-                margin-top: -100px;
-                inline-box-align:initial;
             }
             #logo{
-                width:17%;
-                min-width:300px;
-                max-width:500px;
-                float: left;
                 text-align:center;
                 margin:0 auto;
                 _margin:0px auto;
                 *margin:0px auto;
-                margin-left:10px;
-                padding:0;
-            }
-
-
-            #nav{
-                float: top ;
-                text-align:left;
-                
-            }
-            #websitename{
-                float:top;
-                
-                margin-top:15em; 
-                text-align:left;
             }
             #loginblock{
-                float: right;
                 text-align:right;
-                margin-left: 20px;
             }
-
+            #logo{
+                width: 307px
+            }
         </style>
         <!----------------------------- header style 結束--------------------------------->
         <!----------------------------- BODY 主要style 開始---------------------------->
@@ -91,19 +65,26 @@
             }
         </style>
         <!------------------------BODY 主要style 結束--------------------------------->
+        <!---------------------- BODY 本頁特有元素 style 開始--------------------->
+        <style type="text/css">
+            .plist{
+                display:inline-block;
+                padding:25px;
+                width:100px;
+                height:150px ;
+                border:2px solid black;
+                margin: 10px;
+                box-shadow: 5px 5px 3px  #222;
+            }
 
+        </style>
+        <!--------------------- BODY 本頁特有元素 style 結束--------------------->
         <!----------------------------- footer 主要style 開始---------------------------->
         <style type="text/css">
-            #footer{
-                background:url("#") repeat-x;
-                background-color:#cccccc;
-                display:block;font-size:80%;
-                line-height:140%;margin-top:-10px;
-                position:relative;
-                text-align:center;
-                width:100%;
-                min-height:100px;
-                padding-top:3%;
+            #footer {
+                height: 100px;
+                position: relative;
+                margin-top: -100px;
             }
         </style>
         <!----------------------------- footer 主要style 結束-------------------------->
@@ -120,10 +101,12 @@
                 </div>
                 <div id="nav">
                     <a title="回到首頁" href="#home">首頁</a> | <a href="#aboutus">關於綿堡</a> | <a href="#order">訂製</a> | <a href="#other">其他餐點</a> | <a href="#member">食客服務</a> | <a href="#cart">餐盤</a>
-                    <!--<div id ="subNavOrder" ><a href="#ingredient">特選食材</a> | <a href="#topselect">經典組合</a> | <a href="orderNow">立刻訂製</a></div>-->
+                    <div id ="subNavOrder" ><a href="#ingredient">特選食材</a> | <a href="#topselect">經典組合</a> | <a href="orderNow">立刻訂製</a></div>
                 </div></div>
+
         </div>
         <hr>
+
         <div id="main">
             <div id="sidebar">
                 <div id="sidebarTitle"><h2>側邊欄</h2></div>
@@ -133,16 +116,46 @@
                     <li><img src="#" title="側邊欄" alt="側邊欄" /></li>
                     <li><img src="#" title="側邊欄" alt="側邊欄" /></li>
                 </ul>
+
+                <div id="selectItemListTitle"><h2>已點項目</h2></div>
+                <ul id="selectitemlist">
+                    <li><span> 商品名稱</span> | <span>數量</span> | <span>價格</span></li>
+                    <li><span> 商品名稱</span> | <span>數量</span> | <span>價格</span></li>
+                    <li><span> 商品名稱</span> | <span>數量</span> | <span>價格</span></li>
+                    <li><span> 商品名稱</span> | <span>數量</span> | <span>價格</span></li>
+                </ul>
             </div>
             <div id="content">
-                <div id ="article"><h2>標題</h2></div>
-                <div id="contentText">內容內容</div>
+                <div id ="article"><h2>飲品&點心</h2></div>
+                <div id ="productlist">
+                    <ul>
+                        <li class="plist">
+                            <img src="#" />
+                            <h4>產品1</h4>
+                            <p>價格:1221元</p>
+                        </li>
+                        <li class="plist">
+                            <img src="#" />
+                            <h4>產品2</h4>
+                            <p>價格:123131</p>
+                        </li>
+                        <li class="plist">
+                            <img src="#" />
+                            <h4>產品3</h4>
+                            <p>價格:132131</p>
+                        </li>
+                        <li class="plist">
+                            <img src="#"/>
+                            <h4>產品4</h4>
+                            <p>價格</p>
+                        </li>
+                    </ul>
+                </div>
             </div>
-
         </div>
-        <div id="footer">
-            <p>Made by MeiMei Wu © 2016</p>
-            <a href="test/map.html"><address>台北市復興北路1號</address><img src="#" alt="地圖" /></a>
+        <div id="footer"><hr>
+            Made by MeiMei Wu © 2016
+            <a href="test/map.html"><address>台北市復興北路1號</address></a>
         </div>
     </body>
 </html>
