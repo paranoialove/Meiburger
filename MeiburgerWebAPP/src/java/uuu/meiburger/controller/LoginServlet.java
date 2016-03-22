@@ -60,60 +60,50 @@ public class LoginServlet extends HttpServlet {
             //2.呼叫商業邏輯
             CustomerService service = new CustomerService();
             try {
-                /**              ----- * 商業邏輯內容  -----           */
+                /**
+                 * ----- * 商業邏輯內容 -----
+                 */
                 Customer c = service.login(id, pw);
                 if (c != null) {
-                    
+
                     //會員線上瀏覽人次
                     ServletContext application = this.getServletContext();
-                    Integer cunt = (Integer)application.getAttribute("app.login.cunt");
-                    if(cunt==null){
+                    Integer cunt = (Integer) application.getAttribute("app.login.cunt");
+                    if (cunt == null) {
                         //初始值
-                        cunt=1;
-                    }else{                        
+                        cunt = 1;
+                    } else {
                         cunt++;
                     }
                     application.setAttribute("app.login.cunt", cunt);
-                    
-                    
+
                     //3.1產生回應 轉交給login_ok.jsp   -登入成功
                     //使用絕對路徑(此行為皆在server上處理)
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/login_ok.jsp");
                     request.setAttribute("user", c);
                     dispatcher.forward(request, response);
                     return;
-                } 
-                else {
+                } else {
                     errorList.add("帳號或密碼錯誤，登入失敗");
                 }
             } catch (MeiException ex) {
                 //Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
                 System.out.println("無法登入，請聯絡系統管理員。" + ex);
-                if(ex.getCause() != null){
-                    this.log("無法登入",ex);
+                if (ex.getCause() != null) {
+                    this.log("無法登入", ex);
                     errorList.add("無法登入，請聯絡系統管理員。");
-                }else{
+                } else {
                     errorList.add(ex.getMessage());
                 }
             }
         }
         //1.1.2  格式錯誤
         //3.2產生回應 -失敗   
-        response.setContentType("text/html");
-        response.setCharacterEncoding("UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>無法登入</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>登入失敗！" + errorList + "</h1>");
-            out.println("<input type='button' value='回上頁' onclick='history.back();' />");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
+        request.setAttribute("errors", errorList);
+        
+        dispatcher.forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -130,7 +120,6 @@ public class LoginServlet extends HttpServlet {
 //            throws ServletException, IOException {
 //        processRequest(request, response);
 //    }
-
     /**
      * Handles the HTTP <code>POST</code> method.
      *
