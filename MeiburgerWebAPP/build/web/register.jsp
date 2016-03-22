@@ -64,11 +64,11 @@
                     <% List<String> error = (List<String>) request.getAttribute("errors");
                         if (error != null && error.size() > 0) { %>
                     <div>
-                        <ul>
+                        
                             <% for (String msg : error) {%>
-                            <li><%= msg%></li>
+                            <p><%= msg%></p>
                                 <% } %>
-                        </ul>
+                        
                     </div>
                     <%}%>
 

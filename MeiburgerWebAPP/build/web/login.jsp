@@ -58,11 +58,11 @@
                 <% List<String> error1 = (List<String>) request.getAttribute("errors");
                     if (error1 != null && error1.size() > 0) { %>
                 <div>
-                    <ul>
+                    
                         <% for (String msg : error1) {%>
-                        <li><%= msg%></li>
+                        <p><%= msg%></p>
                             <% } %>
-                    </ul>
+                  
                 </div>
                 <%}%>
                 <div><a href="register.jsp">[新註冊?]</a></div>

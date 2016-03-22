@@ -98,10 +98,10 @@ public class RegisterServlet extends HttpServlet {
        
             } catch (MeiException ex) {
                 //Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
-                System.out.println("無法註冊，請聯絡系統管理員。" + ex);
+                System.out.println("無法註冊，請更換申請帳號資料" + ex);
                 if (ex.getCause() != null) {
                     this.log("無法註冊", ex);
-                    errorList.add("無法註冊，請聯絡系統管理員。");
+                    errorList.add("無法註冊，請更換申請帳號資料。");
                 } else {
                     errorList.add(ex.getMessage());
                 }
