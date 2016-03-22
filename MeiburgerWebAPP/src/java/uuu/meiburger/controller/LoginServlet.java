@@ -9,6 +9,7 @@ import java.util.List;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -75,25 +76,12 @@ public class LoginServlet extends HttpServlet {
                     application.setAttribute("app.login.cunt", cunt);
                     
                     
-                    //3.1產生回應   -登入成功
-                    response.setContentType("text/html");
-                    response.setCharacterEncoding("UTF-8");
-                    try (PrintWriter out = response.getWriter()) {
-                        /* TODO output your page here. You may use following sample code. */
-                        out.println("<!DOCTYPE html>");
-                        out.println("<html>");
-                        out.println("<head>");
-                        out.println("<title>已登入</title>");
-                        out.println("</head>");
-                        out.println("<body>");
-                        out.println("<h1>"+ context.getInitParameter("app-name")  +"</h1>" );
-                        out.println("<p>登入成功！" + c.getName() + "</p>");
-                        out.println("<p>線上人數："+ cunt + "</p>");
-                        out.println("</body>");
-                        out.println("</html>");
-                        return;
-                    }
-
+                    //3.1產生回應 轉交給login_ok.jsp   -登入成功
+                    //使用絕對路徑(此行為皆在server上處理)
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/login_ok.jsp");
+                    request.setAttribute("user", c);
+                    dispatcher.forward(request, response);
+                    return;
                 } 
                 else {
                     errorList.add("帳號或密碼錯誤，登入失敗");
