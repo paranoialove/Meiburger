@@ -5,7 +5,7 @@
 --%>
 
 <%@page import="uuu.meiburger.domain.Customer"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" info="登入成功"  %>
 <!DOCTYPE html>
 <html>
     <head>
