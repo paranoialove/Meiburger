@@ -24,7 +24,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Administrator
  */
-@WebServlet(name = "ImageCheckCodeServlet", urlPatterns = {"/img/check_code.jpg"})
+
 public class ImageCheckCodeServlet extends HttpServlet {
 
     // 宣告3個屬性來定義圖像的字數、高度、寬度 
@@ -87,9 +87,9 @@ public class ImageCheckCodeServlet extends HttpServlet {
         HttpSession session = request.getSession();// (ch15)
         String s = request.getParameter("get");
         if (s == null) {
-            rand = (String) session.getAttribute(getServletName());
+            rand = (String) session.getAttribute("check_code");
         } else {
-            session.removeAttribute(getServletName());
+            session.removeAttribute("check_code");
         }
         // 1.取得 / 產生亂數
         if (rand == null) {
@@ -99,7 +99,7 @@ public class ImageCheckCodeServlet extends HttpServlet {
                 int data = r.nextInt(35);
                 rand += (data < 10 ? (char) (data + '0') : (char) (data - 10 + 'A'));
             }
-            session.setAttribute(getServletName(), rand);
+            session.setAttribute("LoginImageCheckCodeServlet", rand);
         }
         //2. 繪製圖片
 

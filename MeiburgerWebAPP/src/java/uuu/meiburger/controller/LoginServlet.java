@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import uuu.meiburger.domain.Customer;
 import uuu.meiburger.domain.MeiException;
 import uuu.meiburger.model.CustomerService;
@@ -40,6 +41,10 @@ public class LoginServlet extends HttpServlet {
         ServletContext context = this.getServletContext();
         //0. 錯誤清單
         List<String> errorList = new ArrayList<>();
+
+        //0.1 從請求中找session ID
+        HttpSession session = request.getSession();
+
         //1.讀取請求中的表單資料
         String id = request.getParameter("id");
         String pw = request.getParameter("pw");
@@ -52,7 +57,13 @@ public class LoginServlet extends HttpServlet {
         if (checkcode == null) {
             errorList.add("必須輸入驗證碼");
         } else {
-            //檢查驗證碼
+            String oldCheckCode = (String) session.getAttribute("LoginImageCheckCodeServlet");
+            if (!checkcode.equalsIgnoreCase(oldCheckCode)) {
+                errorList.add("驗證碼不正確");
+            }else{
+                System.out.println("驗證碼正確!");
+                session.removeAttribute("LoginImageCheckCodeServlet");
+            }
         }
         //1.1.1  格式正確
         if (errorList != null && errorList.size() == 0) {
@@ -67,6 +78,7 @@ public class LoginServlet extends HttpServlet {
 
                     //會員線上瀏覽人次
                     ServletContext application = this.getServletContext();
+                    session.removeAttribute("LoginImageCheckCodeServlet");
                     Integer cunt = (Integer) application.getAttribute("app.login.cunt");
                     if (cunt == null) {
                         //初始值
@@ -76,11 +88,14 @@ public class LoginServlet extends HttpServlet {
                     }
                     application.setAttribute("app.login.cunt", cunt);
 
-                    //3.1產生回應 轉交給login_ok.jsp   -登入成功
+                    //3.1.1產生回應 內部轉交給需要的網頁：登入OK或者首頁(login_ok.jsp  或  /  )   -登入成功
                     //使用絕對路徑(此行為皆在server上處理)
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/login_ok.jsp");
-                    request.setAttribute("user", c);
-                    dispatcher.forward(request, response);
+//                    request.setAttribute("user", c);
+//                    RequestDispatcher dispatcher = request.getRequestDispatcher("/login_ok.jsp");
+//                    dispatcher.forward(request, response);
+                    //3.1.2 外部轉交redirect
+                    session.setAttribute("user", c);
+                    response.sendRedirect(request.getContextPath());
                     return;
                 } else {
                     errorList.add("帳號或密碼錯誤，登入失敗");
@@ -99,7 +114,7 @@ public class LoginServlet extends HttpServlet {
         //1.1.2  格式錯誤
         //3.2產生回應 -失敗   
         RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
-        request.setAttribute("errors", errorList);        
+        request.setAttribute("errors", errorList);
         dispatcher.forward(request, response);
 
     }

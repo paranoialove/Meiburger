@@ -18,11 +18,6 @@
         <listener-class>uuu.meiburger.web.LoginCuntListener</listener-class>
     </listener>
     
-    
-    
-    
-    
-    
     <servlet>
         <servlet-name>HelloServletTW</servlet-name>
         <servlet-class>uuu.meiburger.view.HelloServlet</servlet-class>         
@@ -36,6 +31,32 @@
         <url-pattern>/zh-tw/hello.view</url-pattern>
         <url-pattern>/zh-tw/hello.asp</url-pattern>
         <url-pattern>/zh-tw/hello.php</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>LoginImageCheckCodeServlet</servlet-name>
+        <servlet-class>uuu.meiburger.view.ImageCheckCodeServlet</servlet-class>
+        <init-param>
+            <param-name>length</param-name>
+            <param-value>6</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginImageCheckCodeServlet</servlet-name>
+        <url-pattern>/img/check_code.jpg</url-pattern>
+    </servlet-mapping>
+    
+        <servlet>
+        <servlet-name>RegisterImageCheckCodeServlet</servlet-name>
+        <servlet-class>uuu.meiburger.view.ImageCheckCodeServlet</servlet-class>
+        <init-param>
+            <param-name>length</param-name>
+            <param-value>6</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisterImageCheckCodeServlet</servlet-name>
+        <url-pattern>/img/reg_check_code.jpg</url-pattern>
     </servlet-mapping>
     
     

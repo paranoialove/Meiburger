@@ -11,7 +11,7 @@
         <script type="text/javascript">
             function refresh() {
                 var image = document.getElementById("checkcodepic");
-                image.src = "img/check_code.jpg?get=" + new Date();
+                image.src = "img/reg_check_code.jpg?get=" + new Date();
             }
         </script>
         <!----------------------------- header style --------------------------------->

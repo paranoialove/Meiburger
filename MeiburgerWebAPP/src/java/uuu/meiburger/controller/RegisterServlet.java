@@ -14,7 +14,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import uuu.meiburger.domain.Customer;
+
 import uuu.meiburger.domain.MeiException;
 import uuu.meiburger.model.CustomerService;
 
@@ -38,6 +40,9 @@ public class RegisterServlet extends HttpServlet {
             throws ServletException, IOException {
         // 0. 錯誤清單
         List errorList = new ArrayList<>();
+
+//        //0.1 從請求中找session ID
+//        HttpSession session = request.getSession();
         //  1.取得並檢查register.html表單資料
         String id = request.getParameter("id");
         String username = request.getParameter("username");
@@ -49,8 +54,6 @@ public class RegisterServlet extends HttpServlet {
 
         if (id == null || (id = id.trim()).length() == 0) {
             errorList.add("必須輸入帳號");
-        } else {
-            //帳號格式檢察
         }
 
         if (username == null || (username = username.trim()).length() == 0) {
@@ -67,17 +70,23 @@ public class RegisterServlet extends HttpServlet {
 
         if (email == null || email.length() <= 0) {
             errorList.add("必須輸入email");
-        } else {
-            //email格式檢查
+        } else if (!email.matches("(([A-Za-z0-9]+\\.?)+([A-Za-z0-9]+_?)+)+[A-Za-z0-9]+@([a-zA-Z0-9]+\\.)+(com|edu|gov)(\\.(tw|ch|hk))?")) {
+            errorList.add("email格式錯誤");
         }
 
         if (checkcode == null) {
             errorList.add("必須輸入驗證碼");
         } else {
-            //檢查驗證碼
+//            String oldCheckCode = (String) session.getAttribute("LoginImageCheckCodeServlet");
+//            if (!checkcode.equalsIgnoreCase(oldCheckCode)) {
+//                errorList.add("驗證碼不正確");
+//            } else {
+//                System.out.println("驗證碼正確!");
+//                session.removeAttribute("LoginImageCheckCodeServlet");
+//            }
         }
 
-        if (errorList.size()==0) {
+        if (errorList.size() == 0) {
             // 2.執行商業邏輯    
             try {
                 Customer c = new Customer();
@@ -95,7 +104,7 @@ public class RegisterServlet extends HttpServlet {
                 request.setAttribute("customer", c);
                 dispatcher.forward(request, response);
                 return;
-       
+
             } catch (MeiException ex) {
                 //Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
                 System.out.println("無法註冊，請更換申請帳號資料" + ex);
