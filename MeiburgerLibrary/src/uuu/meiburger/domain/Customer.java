@@ -196,8 +196,8 @@ public class Customer {
             if (birthday == null) {
                 this.birthday = null;
             }
-            System.out.println("天氣該早於今天以前");
-            throw new MeiException("天氣該早於今天以前");
+            System.out.println("生日該早於今天以前");
+            throw new MeiException("生日該早於今天以前");
         }
     }
 

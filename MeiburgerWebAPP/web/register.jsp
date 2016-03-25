@@ -65,13 +65,6 @@
 
         <div id="main">
             <div id="sidebar">
-                <div id="sidebartitle"><h2>側邊欄</h2></div>
-                <ul>
-                    <li><img src="#" title="側邊欄" alt="側邊欄" /></li>
-                    <li><img src="#" title="側邊欄" alt="側邊欄" /></li>
-                    <li><img src="#" title="側邊欄" alt="側邊欄" /></li>
-                    <li><img src="#" title="側邊欄" alt="側邊欄" /></li>
-                </ul>
             </div>
             <div id="content">                
                 <h2>註冊</h2>

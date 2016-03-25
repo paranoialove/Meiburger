@@ -1,6 +1,7 @@
 <%@page import="uuu.meiburger.domain.Customer"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"  %>
 <%@ page errorPage="/WEB-INF/error.jsp" %>
+
 <!DOCTYPE html>
 
 <html>
@@ -36,46 +37,21 @@
                 alert(msg);
                 $("#userSpan").html('<a href="<%=application.getContextPath()%>/login.jsp">登入</a> ' +
                         '<a href="<%=application.getContextPath()%>/register.jsp">註冊</a>');
-//                $("#user_data").text('');
+                $("#user_data").text('');
             }
         </script>
-
-
     </head>
+
+
     <body>
         <div id="header">
-            <div id="logo_area"><img id="logo" src="img/logo.jpg" alt=""/></div>
-            <div id ="headertext">
-                <div id ="websitename">綿堡MonsterBurger</div>
-                <div id ="loginblock">
-                    <% Customer c = (Customer) session.getAttribute("user"); %>
-                    <div>歡迎！
-                        <% if ((session.getAttribute("user")) != null) {%>
-                        <%= c.getName()%> <%}%>
-                    </div>
-                    <span id = userSpan>
-                        <% if (c == null) {%>
-                        <a href="<%=application.getContextPath()%>/login.jsp">登入</a>                            
-                        <a href="<%=application.getContextPath()%>/register.jsp">註冊</a>
-                        <% } else {%>
-                        <!--<a href="<%=application.getContextPath()%>/us //er/logout.do">登出</a>-->
-                        <a href="javascript:logout()">登出</a>
-                        <%}%>
-                    </span>
-                </div>
-                <div id="nav_area">
-                    <ul id="nav">                    
-                        <a title="回到首頁" href="<%=application.getContextPath()%>/index.jsp">首頁</a> | 
-                        <a href="<%=application.getContextPath()%>/aboutus.jsp">關於綿堡</a> | 
-                        <a href="<%=application.getContextPath()%>/product.jsp">菜單</a> | 
-                        <a href="<%=application.getContextPath()%>/"></a> | 
-                        <a href="<%=application.getContextPath()%>/memberCenter.jsp">食客服務</a> | 
-                        <a href="<%=application.getContextPath()%>/cart.jsp">餐盤</a>
-                        <!--<div id ="subNavOrder" ><a href="#ingredient">特選食材</a> | <a href="#topselect">經典組合</a> | <a href="orderNow">立刻訂製</a></div>-->
-                    </ul></div>
-            </div>
+            <jsp:include  page="WEB-INF/header.jsp" >
+                <jsp:param name="subtitle" value="Home" /> 
+            </jsp:include>
         </div>
-        <hr>
+
+
+
         <div id="main">
             <div id="sidebar">
                 <div id="sidebarTitle"><h2>側邊欄</h2></div>
@@ -96,10 +72,6 @@
             </div>
 
         </div>
-        <div id="footer">
-            <p style="font-size:0.5em">Made by MeiMei Wu © 2016 <span style="font-size:0.5em; font-style:italic">台北市復興北路1號</span></p>
-                <a href="test/map.html"><img src="#" alt="地圖" /></a>
-                
-        </div>
+        <div id="footer"><%@include  file="/WEB-INF/footer.jsp" %>      </div>
     </body>
 </html>
