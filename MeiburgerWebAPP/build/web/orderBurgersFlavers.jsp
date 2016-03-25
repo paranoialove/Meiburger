@@ -7,78 +7,12 @@
         <title>Meiburger orderBurger! 1.Flavers/Size</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!----------------------------- header style 開始--------------------------------->
-        <style type="text/css">
-            #header{
-                float: left;
-                background-color:#ffcccc;
-                text-align:center;
-                width:95%;
-                margin:0 auto;
-                _margin:0px auto;
-                *margin:0px auto;
-                padding:0 0 0 5%;
-            }
-            #logo{
-                width: 200px;
-                float: left;
-                text-align:center;
-                margin:0 auto;
-                _margin:0px auto;
-                *margin:0px auto;
-                margin-left:10px;
-            }
-
-
-            #nav{
-                float: top ;
-                text-align:left;
-            }
-            #websitename{
-                float:top ;
-                margin-top:15em; 
-                text-align:left;
-            }
-            #loginblock{
-                float: right;
-                text-align:right;
-            }
-
-        </style>
-        <!----------------------------- header style 結束--------------------------------->
+        <!----------------------------- header style --------------------------------->
+        <link href="css/header.css" rel="stylesheet" type="text/css"/>
         <!----------------------------- BODY 主要style 開始---------------------------->
-        <style type="text/css">
-            #main {
-                width: 100%;
-                display:inline-block;
-                margin:0 auto;
-                text-align:center;
-                padding-bottom: 100px;
-            }
-            #sidebar{
-                float:left;
-                width:20%;
-                height:80%;
-                margin:0px 0px;
-                text-align: center;
-            }
-            #sidebar ul{
-                padding-left: 0px;
-                list-style-type:none;
-            }
-            #content{
-
-                float:right;
-                margin: 0px 0px;
-                width:70%;
-                height: 80%;
-            }
-            #content h2{
-                background: brown;
-                opacity: 0.8;
-            }
-        </style>
-        <!------------------------BODY 主要style 結束--------------------------------->
+        <link href="css/main_body.css" rel="stylesheet" type="text/css"/>
+        <!----------------------------- footer 主要style 開始---------------------------->
+        <link href="css/footer.css" rel="stylesheet" type="text/css"/>     
         <!---------------------- BODY 本頁特有元素 style 開始--------------------->
         <style type="text/css">
             .radiocontain{
@@ -105,21 +39,6 @@
 
         </style>
         <!--------------------- BODY 本頁特有元素 style 結束--------------------->
-        <!----------------------------- footer 主要style 開始---------------------------->
-        <style type="text/css">
-            #footer{
-                background:url("#") repeat-x;
-                background-color:#ffffcc;
-                display:block;font-size:80%;
-                line-height:140%;margin-top:-10px;
-                position:relative;
-                text-align:center;
-                width:100%;
-                min-height:100px;
-                padding-top:3%;
-            }
-        </style>
-        <!----------------------------- footer 主要style 結束-------------------------->
 
     </head>
     <body>

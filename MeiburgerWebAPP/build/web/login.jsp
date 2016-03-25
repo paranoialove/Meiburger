@@ -67,6 +67,10 @@
 
             </div>
 
-            <div id="footer"></div>
+             <div id="footer">
+            <p style="font-size:0.5em">Made by MeiMei Wu © 2016 <span style="font-size:0.5em; font-style:italic">台北市復興北路1號</span></p>
+                <a href="test/map.html"><img src="#" alt="地圖" /></a>
+                
+        </div>
     </body>
 </html>

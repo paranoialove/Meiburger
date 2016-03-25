@@ -8,16 +8,14 @@ and open the template in the editor.
     Author     : Administrator
 */
 
-            #footer{
-                background:url("#") repeat-x;
-                background-color:#cccccc;
-                display:block;
-                font-size:80%;
-                line-height:140%;
-                margin-top:0px;
-                position:relative;
-                text-align:center;
-                width:100%;
-                min-height:100px;
-                padding-top:3%;
-            }
+#footer{
+    text-align:center;
+    vertical-align:middle;
+    background:url() no-repeat left center;		
+    height:90px;
+    width:100%;
+    margin:0;
+    padding-top:1em;
+    padding-bottom: 1em;
+    background-color:#b9e5ab ;
+}

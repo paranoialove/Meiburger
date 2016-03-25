@@ -7,52 +7,156 @@ and open the template in the editor.
     Created on : 2016/3/22, 下午 12:38:28
     Author     : Administrator
 */
+body{
+    min-width: 480px;
+    font-family:Microsoft JhengHei;
+}
 
-            #header{
-                float: left;
-                background-color:#ffcccc;
-                text-align:center;
-                width:95%;
-                margin:0 auto;
-                _margin:0px auto;
-                *margin:0px auto;
-                padding:0 0 0 5%;
-                height:200px;
-                max-height:260px;
-                min-height:280px;
-                
-            }
-            #headertext{
-                margin-top: -100px;
-                inline-box-align:initial;
-            }
-            #logo{
-                width:17%;
-                min-width:300px;
-                max-width:500px;
-                float: left;
-                text-align:center;
-                margin:0 auto;
-                _margin:0px auto;
-                *margin:0px auto;
-                margin-left:10px;
-                padding:0;
-            }
+h2{
+    font-size:medium ;
+}
+
+#header{
+    float: top;
+    background-image: url(img/vegr.png)  ;
+    background-repeat: no-repeat;
+    /*background-attachment: fixed;*/    
+    background-position: right top  ;
+    background-size: 100%;
+
+    text-align:center;
+    width:94%;
+    margin:0 0;
+    _margin:0px auto;
+    *margin:0px auto;
+    padding:0 0 0 5%;
+
+}
+#headertext{
+    float: top;
+    /*margin-top: -100px;*/
+}
+#websitename{
+    float:top;
+    margin-top: 1em; 
+    margin-bottom: -1em;
+    font-weight: bold;
+    text-align:left;
+    line-height:0em;
+}
+#loginblock{
+    width:5em ;
+    background-color: #99b78f ;
+    opacity: 0.8;
+    float: right;
+    text-align:right;
+}
+#nav_area{
+    float: top ;
+    text-align:left;
+}
+#nav{
+    float: top ;
+    padding-top: 1em;
+    text-align:left;
+    padding-left: 0;
+}
 
 
-            #nav{
-                float: top ;
-                text-align:left;
-                
-            }
-            #websitename{
-                float:top;
-                
-                margin-top:15em; 
-                text-align:left;
-            }
-            #loginblock{
-                float: right;
-                text-align:right;
-                margin-left: 20px;
-            }
+@media screen and (min-width: 980px) {
+    /* 如果使用者之視窗寬度 >= 1200px，將會再載入這裡的 CSS。*/
+    #header{
+        height:180px;
+        padding-top: 0.7em;
+        padding-right:10px;
+    }
+    #logo_area{
+        float: left;
+        width: 100%;
+        margin-bottom:0.8em ; 
+    }
+    #logo {
+        width:220px;
+        float:left;
+        text-align:left;
+        margin:0 auto;
+        _margin:0px auto;
+        *margin:0px auto;
+        padding:0;
+    }
+
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 979px) {
+    /* 如果使用者之視窗寬度介於 768px ~ 979px，將會再載入這裡的 CSS。*/   
+    #header{
+        height:200px;
+        padding-top: 0.7em;
+        padding-right:10px;
+    } 
+    #logo_area{
+        float: left;
+        width: 100%;
+        margin-bottom:0.8em ; 
+    }
+    #logo {
+        width:260px;
+        float:left;
+        text-align:left;
+        margin:0 auto;
+        _margin:0px auto;
+        *margin:0px auto;
+        padding:0;
+    }
+
+    #loginblock{
+        margin-bottom: -1em;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    /*// 如果使用者之視窗寬度 <= 768px，將會再載入這裡的 CSS。*/    
+    #header{
+        padding-top: 0.7em;
+        height:240px;
+        background-size:auto,120% ;
+        background-position: right top;
+    } 
+    #logo {
+        width:320px;
+        float: top;
+        text-align:center;
+        margin:0 auto;
+        _margin:0px auto;
+        *margin:0px auto;
+        margin-left:10px;
+        padding:0;
+    }
+    #websitename{
+        margin-top: 2.5em;
+    }
+    #loginblock{
+        margin-top: 0.3em;
+        width: 5em;
+    }
+
+}
+
+@media screen and (max-device-width: 480px) {
+    /*// 如果使用者之裝置寬度 <= 480px，將會再載入這裡的 CSS。*/ 
+
+    #header{
+        height:240px;
+    } 
+    #logo {
+        width:380px;
+        float: top;
+        text-align:center;
+        margin:0 auto;
+        _margin:0px auto;
+        *margin:0px auto;
+        margin-left:10px;
+        padding:0;
+    }
+} 

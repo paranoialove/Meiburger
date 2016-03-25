@@ -23,8 +23,9 @@ import javax.servlet.http.HttpSessionListener;
  * @author Administrator
  */
 public class LoginCuntListener implements ServletContextListener, HttpSessionListener {
+
     //※測試步驟※  
-        /*Run (觸發contextInitialized) 一開始沒有properties檔案，出現檔案找不到錯誤訊息) → 
+    /*Run (觸發contextInitialized) 一開始沒有properties檔案，出現檔案找不到錯誤訊息) → 
           登入(觸發counter) 此時Servlet Context並沒有app.login.count，所以在創建時，值為null→ 
           stop(觸發contextDestroyed)，此時計數人次將寫入counter.properties，路徑為build/web/WEB-INF/counter.properties →
           start(觸發contextInitialized)，此時存放於counter.properties的計數人次，將會被讀出存放於Servlet Context記憶體裡→
@@ -38,7 +39,6 @@ public class LoginCuntListener implements ServletContextListener, HttpSessionLis
     @Override //應用程式啟動事件
     public void contextInitialized(ServletContextEvent sce) {
         System.out.println("Tripfootprints app start......");
-        
 
         //1、取得context記憶體 並建立一個properties
         ServletContext application = sce.getServletContext();
@@ -80,10 +80,8 @@ public class LoginCuntListener implements ServletContextListener, HttpSessionLis
 
         //2、得到context記憶體裡面所有Attribute name    ※(指標: cursor , iterator , "enumeration")
 //        Enumeration<String> names = application.getAttributeNames();
-
         //3、讀資料前建立一個空的properties
 //        Properties props = new Properties();
-
         //4、開始讀取並將目標Attribute的name & value寫入properties
 //        while (names.hasMoreElements()) {
 //            String name = names.nextElement(); 
@@ -93,7 +91,6 @@ public class LoginCuntListener implements ServletContextListener, HttpSessionLis
 //                props.setProperty(name, value.toString());
 //            }
 //        }
-
         //5、將properties 存到目標路徑
 //        String path = application.getRealPath("/WEB-INF/counter.properties");   //取得web_server下  /WEB-INF 的路徑 
         //FileOutputStream 位元檔    FileWriter文字檔
@@ -110,7 +107,13 @@ public class LoginCuntListener implements ServletContextListener, HttpSessionLis
 
     @Override
     public void sessionCreated(HttpSessionEvent se) {
+        ServletContext application = se.getSession().getServletContext();
 
+        Integer visitorsCount = (Integer) application.getAttribute("app.visitors.count");
+        if(visitorsCount == null){
+            visitorsCount = 0;
+        }
+        application.setAttribute("app.visitors.count", visitorsCount);
     }
 
     @Override

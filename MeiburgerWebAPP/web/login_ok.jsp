@@ -10,9 +10,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!----------------------------- header style --------------------------------->
         <link href="css/header.css" rel="stylesheet" type="text/css"/>
+        <!----------------------------- BODY 主要style 開始---------------------------->
         <link href="css/main_body.css" rel="stylesheet" type="text/css"/>
-        <link href="css/footer.css" rel="stylesheet" type="text/css"/>
+        <!----------------------------- footer 主要style 開始---------------------------->
+        <link href="css/footer.css" rel="stylesheet" type="text/css"/>     
         <title>MeiBurger 已登入</title>
     </head>
     <body>

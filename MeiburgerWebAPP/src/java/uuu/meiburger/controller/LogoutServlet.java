@@ -6,12 +6,14 @@
 package uuu.meiburger.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import uuu.meiburger.domain.Customer;
 
 /**
  *
@@ -32,10 +34,24 @@ public class LogoutServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
+        String msg = "已登出";
+        
         if (session != null) {
+            Customer user = (Customer) session.getAttribute("user");
+            if(user !=null){
+                String name = user.getName();
+                msg = name +msg + ',' +  "要快點回來唷~";
+            }
             session.invalidate();
         }
-        response.sendRedirect(request.getContextPath());
+        
+        //response.sendRedirect(request.getContextPath());  //轉址回首頁
+        response.setContentType("text/plain"); 
+        response.setCharacterEncoding("UTF-8");
+        try (PrintWriter out = response.getWriter()){
+            out.println(msg);
+        } 
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
