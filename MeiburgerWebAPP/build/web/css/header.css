@@ -83,7 +83,6 @@ h2{
 }
 
 
-/*-----------------------nav--------------------------------- */
 
 
 #nav {
@@ -121,13 +120,13 @@ h2{
     position: absolute;
     left: 0;
     width: 100%;
-    color: #fff;
-    background: rgba(117,236,128,0.8) url('bottom.gif') no-repeat bottom;
+    /*    color: #444;*/
+    background: rgba(255,255,255,0.8) url('bottom.gif') no-repeat bottom;
     display: none;
 }
-#nav li ul li { border-right: 1px solid #fff; color: #fff; }
-#nav li ul li a { display: inline;color: #fff; text-decoration: none;padding: 10px 15px;}
-#nav li ul li a:hover { text-decoration: underline; }
+#nav li ul li { border-right: 1px solid #fff; }
+#nav>li>ul>li>a { display: inline;color: #444; text-decoration: none; padding: 10px 15px;}
+#nav li ul li a:hover { background-color:#fff73f ; color:#444 ; }
 
 
 

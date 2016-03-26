@@ -23,8 +23,9 @@
         <script src="js/jquery-ui-1.11.4/jquery-ui.js" type="text/javascript"></script>
         <link href="js/jquery-ui-1.11.4/jquery-ui.css" rel="stylesheet" type="text/css"/>
 
-        <!-----------------------------  登出ajax ----------------------------->
+
         <script type="text/javascript">
+            //<!-----------------------------  登出ajax ----------------------------->
             function logout() {
                 $.ajax({
                     method: "POST",
@@ -39,6 +40,9 @@
                         '<a href="<%=application.getContextPath()%>/register.jsp">註冊</a>');
                 $("#user_data").text('');
             }
+
+
+
         </script>
     </head>
 
@@ -47,7 +51,7 @@
         <div id="header">
             <div id="logo_area"><img id="logo" src="img/logo2.jpg" alt=""/></div>
             <div id ="headertext">
-                <div id ="websitename">系帛系帛 の バーガー  </div>
+
                 <div id ="loginblock">
                     <% Customer c = (Customer) session.getAttribute("user"); %>
                     <div>歡迎！
@@ -65,6 +69,7 @@
                     </span>
                 </div>
                 <div id="nav_area">
+                    <div id ="websitename">系帛系帛 の バーガー  </div>
                     <ul id="nav">
                         <li><a title="回到首頁" href="<%=application.getContextPath()%>/index.jsp">首頁</a> </li>
                         <li><a href="<%=application.getContextPath()%>/aboutus.jsp">關於綿堡</a></li>
@@ -88,7 +93,6 @@
                             // 先找到 li 中的子選單
                             var _this = $(this),
                                     _subnav = _this.children('ul');
-
                             // 變更目前母選項的背景顏色
                             // 同時淡入子選單(如果有的話)
                             _this.css('backgroundColor', 'rgba(15,60,6,1)');
@@ -99,7 +103,6 @@
                             // 也可以把整句拆成上面的寫法
                             $(this).css('backgroundColor', '').children('ul').stop(true, true).fadeOut(400);
                         });
-
                         // 取消超連結的虛線框
                         $('a').focus(function () {
                             this.blur();
