@@ -3,13 +3,38 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
-/* 
+/*
     Created on : 2016/3/22, 下午 12:38:28
     Author     : Administrator
 */
+::selection {
+    background: #fff73f;
+    color: #444;
+}
+::-moz-selection {
+    background: #fff73f;
+    color: #444;
+}
+img::selection {
+    background: transparent;
+}
+img::-moz-selection {
+    background: transparent;
+}
+
+html{
+    margin:0;
+    padding:0;
+    background: #000 url(img/veg-gardening-fall.png) center center fixed no-repeat;
+    -moz-background-size: cover;
+    background-size: cover;
+}
+
 body{
     min-width: 480px;
     font-family:Microsoft JhengHei;
+    color: #212121;
+
 }
 
 h2{
@@ -18,12 +43,12 @@ h2{
 
 #header{
     float: top;
-    background-image: url(img/vegr.png)  ;
-    background-repeat: no-repeat;
-    /*background-attachment: fixed;*/    
-    background-position: right top  ;
-    background-size: 100%;
-
+    /*        background-image: url(img/vegr.png)  ;
+            background-repeat: no-repeat;
+        background-attachment: fixed;
+            background-position: right top  ;
+            background-size: 100%;*/
+    background-color: rgba(255,255,255,0.6);
     text-align:center;
     width:94%;
     margin:0 0;
@@ -38,7 +63,7 @@ h2{
 }
 #websitename{
     float:top;
-    margin-top: 1em; 
+    margin-top: 1em;
     margin-bottom: -1em;
     font-weight: bold;
     text-align:left;
@@ -46,23 +71,68 @@ h2{
 }
 #loginblock{
     width:5em ;
-    background-color: #99b78f ;
+    background-color: rgba(0,0,0,1) ;
     opacity: 0.8;
     float: right;
     text-align:right;
+    color: #fff;
 }
 #nav_area{
     float: top ;
     text-align:left;
 }
-#nav{
-    float: top ;
+
+
+/*-----------------------nav--------------------------------- */
+
+
+#nav {
+    margin: 0;
+    padding: 0;
     padding-top: 1em;
-    text-align:left;
-    padding-left: 0;
+    list-style: none;
+    position: relative;
+    width: 480px;
+    float: left;
+}
+#nav li {
+    line-height: 1em;
+    color: #000;
+    margin: 0;
+    padding: 0;
+    float: left;
+    border-right: 1px solid #999;
+}
+#nav>li>a {
+    padding: 10px 15px;
+    display: block;
+    color: #000;
+    text-decoration: none;
+}
+#nav>li>a:hover{
+    color:#fff;
 }
 
+#nav>li>ul {
+    margin: 0;
+    padding: 15px 0;
+    list-style: none;
+    float: left;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    color: #fff;
+    background: rgba(117,236,128,0.8) url('bottom.gif') no-repeat bottom;
+    display: none;
+}
+#nav li ul li { border-right: 1px solid #fff; color: #fff; }
+#nav li ul li a { display: inline;color: #fff; text-decoration: none;padding: 10px 15px;}
+#nav li ul li a:hover { text-decoration: underline; }
 
+
+
+
+/*----------------------網頁寬度變化header排版---------------------------*/
 @media screen and (min-width: 980px) {
     /* 如果使用者之視窗寬度 >= 1200px，將會再載入這裡的 CSS。*/
     #header{
@@ -73,7 +143,7 @@ h2{
     #logo_area{
         float: left;
         width: 100%;
-        margin-bottom:0.8em ; 
+        margin-bottom:0.8em ;
     }
     #logo {
         width:220px;
@@ -89,16 +159,16 @@ h2{
 }
 
 @media screen and (min-width: 768px) and (max-width: 979px) {
-    /* 如果使用者之視窗寬度介於 768px ~ 979px，將會再載入這裡的 CSS。*/   
+    /* 如果使用者之視窗寬度介於 768px ~ 979px，將會再載入這裡的 CSS。*/
     #header{
         height:200px;
         padding-top: 0.7em;
         padding-right:10px;
-    } 
+    }
     #logo_area{
         float: left;
         width: 100%;
-        margin-bottom:0.8em ; 
+        margin-bottom:0.8em ;
     }
     #logo {
         width:260px;
@@ -113,16 +183,20 @@ h2{
     #loginblock{
         margin-bottom: -1em;
     }
+    #nav{
+        margin-top:1em;
+        position: absolute;
+    }
 }
 
 @media screen and (max-width: 767px) {
-    /*// 如果使用者之視窗寬度 <= 768px，將會再載入這裡的 CSS。*/    
+    /*// 如果使用者之視窗寬度 <= 768px，將會再載入這裡的 CSS。*/
     #header{
         padding-top: 0.7em;
-        height:240px;
+        height:260px;
         background-size:auto,120% ;
         background-position: right top;
-    } 
+    }
     #logo {
         width:320px;
         float: top;
@@ -140,15 +214,19 @@ h2{
         margin-top: 0.3em;
         width: 5em;
     }
+    #nav{
+        margin-top:1em;
+        position: absolute;
+    }
 
 }
 
 @media screen and (max-device-width: 480px) {
-    /*// 如果使用者之裝置寬度 <= 480px，將會再載入這裡的 CSS。*/ 
+    /*// 如果使用者之裝置寬度 <= 480px，將會再載入這裡的 CSS。*/
 
     #header{
-        height:240px;
-    } 
+        height:260px;
+    }
     #logo {
         width:380px;
         float: top;
@@ -159,4 +237,4 @@ h2{
         margin-left:10px;
         padding:0;
     }
-} 
+}

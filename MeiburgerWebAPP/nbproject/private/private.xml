@@ -3,13 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Administrator/Documents/Meiburger/MeiburgerWebAPP/web/login.jsp</file>
-            <file>file:/C:/Users/Administrator/Documents/Meiburger/MeiburgerWebAPP/src/java/uuu/meiburger/controller/LoginServlet.java</file>
-            <file>file:/C:/Users/Administrator/Documents/Meiburger/MeiburgerWebAPP/src/java/uuu/meiburger/controller/RegisterServlet.java</file>
-            <file>file:/C:/Users/Administrator/Documents/Meiburger/MeiburgerWebAPP/web/index.jsp</file>
-            <file>file:/C:/Users/Administrator/Documents/Meiburger/MeiburgerWebAPP/web/register.jsp</file>
-            <file>file:/C:/Users/Administrator/Documents/Meiburger/MeiburgerWebAPP/src/java/uuu/meiburger/controller/LogoutServlet.java</file>
-            <file>file:/C:/Users/Administrator/Documents/Meiburger/MeiburgerWebAPP/src/java/uuu/meiburger/view/ImageCheckCodeServlet.java</file>
+            <file>file:/D:/Documents/GitHub/Meiburger/MeiburgerWebAPP/web/WEB-INF/header.jsp</file>
+            <file>file:/D:/Documents/GitHub/Meiburger/MeiburgerWebAPP/web/css/header.css</file>
         </group>
     </open-files>
 </project-private>

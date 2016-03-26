@@ -4,7 +4,7 @@
 
 <html>
     <head>
-        <title>Meiburger orderBurger! Bread</title>
+        <title>Meiburger orderBurger! 1.Flavers/Size</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!----------------------------- header style --------------------------------->
@@ -12,7 +12,7 @@
         <!----------------------------- BODY 主要style 開始---------------------------->
         <link href="css/main_body.css" rel="stylesheet" type="text/css"/>
         <!----------------------------- footer 主要style 開始---------------------------->
-        <link href="css/footer.css" rel="stylesheet" type="text/css"/>     
+        <link href="css/footer.css" rel="stylesheet" type="text/css"/>
         <!---------------------- BODY 本頁特有元素 style 開始--------------------->
         <style type="text/css">
             .radiocontain{
@@ -20,12 +20,12 @@
                 text-align: left;
             }
             .radio{
-				vertical-align: top;
+                vertical-align: top;
                 display:inline-block;
                 padding:0;
                 width:200px;
                 height:200px ;
-				margin: 0.5em;
+                margin: 0.5em;
                 border:2px solid black;
                 box-shadow: 5px 5px 3px  #222;
             }
@@ -52,12 +52,10 @@
                 </div>
                 <div id="nav">
                     <a title="回到首頁" href="#home">首頁</a> | <a href="#aboutus">關於綿堡</a> | <a href="#order">訂製</a> | <a href="#other">其他餐點</a> | <a href="#member">食客服務</a> | <a href="#cart">餐盤</a>
-                    <div id ="subNavOrder" ><a href="#ingredient">特選食材</a> | <a href="#topselect">經典組合</a> | <a href="orderNow">立刻訂製</a></div>
+                    <div id ="subNavOrder" hidden ><a href="#ingredient">特選食材</a> | <a href="#topselect">經典組合</a> | <a href="orderNow">立刻訂製</a></div>
                 </div></div>
-
         </div>
         <hr>
-
         <div id="main">
             <div id="sidebar">
                 <div id="sidebarTitle"><h2>選擇漢堡的組合</h2></div>
@@ -86,7 +84,6 @@
                         <div id="sizeradio">
                             <input type="radio" id="inch6" name="burgerSize" value="6吋" checked="checked"/><label for="inch6">6吋</label>
                             <input type="radio" id="inch12" name="burgerSize" value="12吋" /><label for="inch12">12吋</label>
-                            <p>價格:1221元</p>
                         </div>
                         <div class="radiocontain">
                             <div class="radio" id="breadItalian" onclick="isBreadSelected()">
@@ -109,16 +106,16 @@
                                 <img src="#" alt="麵包001" />
                                 <div>麵包001</div>
                             </div>
+                            <input type="hidden" name="bread" value="bread" />
+
                         </div>
+                        <p>價格:1221元</p>
                         <input type="submit" value="選擇"/>
                     </form>
                 </div>
             </div>
 
         </div>
-        <div id="footer">
-            Made by MeiMei Wu © 2016
-            <a href="test/map.html"><address>台北市復興北路1號</address></a>
-        </div>
+        <div id="footer"><%@include  file="/WEB-INF/footer.jsp" %>      </div>
     </body>
 </html>
