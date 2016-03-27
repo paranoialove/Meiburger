@@ -48,6 +48,7 @@ public class RegisterServlet extends HttpServlet {
         String username = request.getParameter("username");
         String pw = request.getParameter("pw");
         String pwck = request.getParameter("pwck");
+        String birthday = request.getParameter("birthday");
         String gender = request.getParameter("gender");
         String email = request.getParameter("email");
         String checkcode = request.getParameter("checkcode");
@@ -87,7 +88,7 @@ public class RegisterServlet extends HttpServlet {
         }
 
         if (errorList.size() == 0) {
-            // 2.執行商業邏輯    
+            // 2.執行商業邏輯
             try {
                 Customer c = new Customer();
                 c.setId(id);
@@ -95,11 +96,11 @@ public class RegisterServlet extends HttpServlet {
                 c.setPassword(pw);
                 c.setGender(gender.charAt(0));
                 c.setEmail(email);
-
+                c.setBirthday(birthday);
                 CustomerService service = new CustomerService();
                 service.register(c);
 
-                //3.1輸出結果 - 成功  
+                //3.1輸出結果 - 成功
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/register_ok.jsp");
                 request.setAttribute("customer", c);
                 dispatcher.forward(request, response);

@@ -59,8 +59,9 @@ public class Customer {
     //可用多載
     //建構式在外使用只能用來 new 新物件
     //建構式內部可以使用方法
-    public Customer() throws MeiException{  //提供無參數建構式於此不合理。
+    public Customer() throws MeiException {  //提供無參數建構式於此不合理。
     }
+
     public Customer(String id, String name, String password, String email) throws MeiException {
         //須檢查參數是否格式內容正確
         //使用setXX()內之檢查式檢查。
@@ -72,6 +73,7 @@ public class Customer {
     }
 
     public Customer(String id, String name, String password, String email, char gender, int phone) throws MeiException {
+        //id, name, gender, password, email, birthday, phone, address
         //建構式只可以自己call自己的建構式
         //如需要必須優先敘述
         this(id, name, password, email);
