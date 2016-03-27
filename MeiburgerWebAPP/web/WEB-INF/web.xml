@@ -12,15 +12,15 @@
         <param-name>charset</param-name>
         <param-value>big5</param-value>
     </context-param>
-    
+
     <listener>
         <description>ServletContextListener, HttpSessionListener</description>
         <listener-class>uuu.meiburger.web.LoginCuntListener</listener-class>
     </listener>
-    
+
     <servlet>
         <servlet-name>HelloServletTW</servlet-name>
-        <servlet-class>uuu.meiburger.view.HelloServlet</servlet-class>         
+        <servlet-class>uuu.meiburger.view.HelloServlet</servlet-class>
         <init-param>
             <param-name>welcome</param-name>
             <param-value>歡迎</param-value>
@@ -32,7 +32,7 @@
         <url-pattern>/zh-tw/hello.asp</url-pattern>
         <url-pattern>/zh-tw/hello.php</url-pattern>
     </servlet-mapping>
-    
+
     <servlet>
         <servlet-name>LoginImageCheckCodeServlet</servlet-name>
         <servlet-class>uuu.meiburger.view.ImageCheckCodeServlet</servlet-class>
@@ -45,8 +45,8 @@
         <servlet-name>LoginImageCheckCodeServlet</servlet-name>
         <url-pattern>/img/check_code.jpg</url-pattern>
     </servlet-mapping>
-    
-        <servlet>
+
+    <servlet>
         <servlet-name>RegisterImageCheckCodeServlet</servlet-name>
         <servlet-class>uuu.meiburger.view.ImageCheckCodeServlet</servlet-class>
         <init-param>
@@ -58,11 +58,33 @@
         <servlet-name>RegisterImageCheckCodeServlet</servlet-name>
         <url-pattern>/img/reg_check_code.jpg</url-pattern>
     </servlet-mapping>
-    
-    
+
+
+
+    <servlet>
+        <servlet-name>ImageCheckCodeServlet</servlet-name>
+        <servlet-class>uuu.meiburger.view.ImageCheckCodeServlet</servlet-class>
+        <init-param>
+            <param-name>length</param-name>
+            <param-value>6</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ImageCheckCodeServlet</servlet-name>
+        <url-pattern>/img/echeck_code.jpg</url-pattern>
+    </servlet-mapping>
+
+
+
+
+
+
+
+
+
     <servlet>
         <servlet-name>HelloServletUS</servlet-name>
-        <servlet-class>uuu.meiburger.view.HelloServlet</servlet-class>         
+        <servlet-class>uuu.meiburger.view.HelloServlet</servlet-class>
         <init-param>
             <param-name>welcome</param-name>
             <param-value>welcome</param-value>
@@ -74,8 +96,8 @@
         <url-pattern>/en-us/hello.asp</url-pattern>
         <url-pattern>/en-us/hello.php</url-pattern>
     </servlet-mapping>
-    
-    
+
+
     <servlet>
         <servlet-name>HelloJSP</servlet-name>
         <jsp-file>/WEB-INF/hello.jsp</jsp-file>
@@ -89,16 +111,16 @@
         <url-pattern>/hello.jsp</url-pattern>
         <url-pattern>/hello.php</url-pattern>
     </servlet-mapping>
-    
-    
-    
-    <session-config>    
+
+
+
+    <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-    
-    
+
+
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
         <welcome-file>>index.html</welcome-file>

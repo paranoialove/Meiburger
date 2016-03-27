@@ -103,6 +103,7 @@ public class ImageCheckCodeServlet extends HttpServlet {
             }
             session.setAttribute("LoginImageCheckCodeServlet", rand);
             session.setAttribute("RegisterImageCheckCodeServlet", rand);
+            session.setAttribute("ImageCheckCodeServlet", rand);
         }
         //2. 繪製圖片
 
