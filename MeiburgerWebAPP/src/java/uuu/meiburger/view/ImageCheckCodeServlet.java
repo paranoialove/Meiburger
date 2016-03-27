@@ -24,23 +24,21 @@ import javax.servlet.http.HttpSession;
  *
  * @author Administrator
  */
-
 public class ImageCheckCodeServlet extends HttpServlet {
 
-    // 宣告3個屬性來定義圖像的字數、高度、寬度 
+    // 宣告3個屬性來定義圖像的字數、高度、寬度
     private int len = 6, width = 16 * 2 + 12 * len, height = 20;
-    
-    
+
     //加上兩個新的方法來產生影像和顏色
     private BufferedImage generateImage(String rand, int width, int height) {
         //開始建立影像
-        BufferedImage image =
-                new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        BufferedImage image
+                = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         Graphics g = image.getGraphics();   //取得影像繪圖區
         g.setColor(getRandomColor(200, 250)); //設定繪圖區背景色
         g.fillRect(0, 0, width, height);  //在繪圖區畫個長方型
         g.setFont(new Font("Arial", Font.PLAIN, 18));//設定字體
- 
+
         //產生干擾線讓影像略模糊不易識別
         Random random = new Random();
         g.setColor(getRandomColor(170, 210));
@@ -51,7 +49,7 @@ public class ImageCheckCodeServlet extends HttpServlet {
             int yl = random.nextInt(12);
             g.drawLine(x, y, x + xl, y + yl);
         }
- 
+
         //將認證數字顯示到影像
         g.setColor(getRandomColor(20, 140));
         //將認證數字顯示到影像
@@ -59,18 +57,22 @@ public class ImageCheckCodeServlet extends HttpServlet {
         g.dispose();
         return image;
     }
- 
+
     private Color getRandomColor(int fc, int bc) {
         //在參數設定的範圍內，隨機產生顏色
         Random random = new Random();
-        if (fc > 255) fc = 255;
-        if (bc > 255) bc = 255;
+        if (fc > 255) {
+            fc = 255;
+        }
+        if (bc > 255) {
+            bc = 255;
+        }
         int r = fc + random.nextInt(bc - fc);
         int g = fc + random.nextInt(bc - fc);
         int b = fc + random.nextInt(bc - fc);
         return new Color(r, g, b);
     }
- 
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -82,7 +84,7 @@ public class ImageCheckCodeServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //0. 根據請求來判斷是否更新亂數文字 
+        //0. 根據請求來判斷是否更新亂數文字
         String rand = null;
         HttpSession session = request.getSession();// (ch15)
         String s = request.getParameter("get");
@@ -100,10 +102,10 @@ public class ImageCheckCodeServlet extends HttpServlet {
                 rand += (data < 10 ? (char) (data + '0') : (char) (data - 10 + 'A'));
             }
             session.setAttribute("LoginImageCheckCodeServlet", rand);
+            session.setAttribute("RegisterImageCheckCodeServlet", rand);
         }
         //2. 繪製圖片
 
-        
         BufferedImage image = generateImage(rand, width, height);
 
         //3. 產生http回應

@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import uuu.meiburger.domain.Customer;
 
@@ -42,7 +43,8 @@ public class RegisterServlet extends HttpServlet {
         List errorList = new ArrayList<>();
 
 //        //0.1 從請求中找session ID
-//        HttpSession session = request.getSession();
+        HttpSession session = request.getSession();
+
         //  1.取得並檢查register.html表單資料
         String id = request.getParameter("id");
         String username = request.getParameter("username");
@@ -51,6 +53,7 @@ public class RegisterServlet extends HttpServlet {
         String birthday = request.getParameter("birthday");
         String gender = request.getParameter("gender");
         String email = request.getParameter("email");
+
         String checkcode = request.getParameter("checkcode");
 
         if (id == null || (id = id.trim()).length() == 0) {
@@ -78,13 +81,13 @@ public class RegisterServlet extends HttpServlet {
         if (checkcode == null) {
             errorList.add("必須輸入驗證碼");
         } else {
-//            String oldCheckCode = (String) session.getAttribute("LoginImageCheckCodeServlet");
-//            if (!checkcode.equalsIgnoreCase(oldCheckCode)) {
-//                errorList.add("驗證碼不正確");
-//            } else {
-//                System.out.println("驗證碼正確!");
-//                session.removeAttribute("LoginImageCheckCodeServlet");
-//            }
+            String oldCheckCode = (String) session.getAttribute("RegisterImageCheckCodeServlet");
+            if (!checkcode.equalsIgnoreCase(oldCheckCode)) {
+                errorList.add("驗證碼不正確");
+            } else {
+                System.out.println("驗證碼正確!");
+                session.removeAttribute("RegisterImageCheckCodeServlet");
+            }
         }
 
         if (errorList.size() == 0) {
@@ -116,12 +119,12 @@ public class RegisterServlet extends HttpServlet {
                     errorList.add(ex.getMessage());
                 }
             }
-
-            //3.2輸出結果 - 失敗
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/register.jsp");
-            request.setAttribute("errors", errorList);
-            dispatcher.forward(request, response);
         }
+        //3.2輸出結果 - 失敗
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/register.jsp");
+        request.setAttribute("errors", errorList);
+        dispatcher.forward(request, response);
+
     }
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 

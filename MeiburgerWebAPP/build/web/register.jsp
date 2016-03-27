@@ -16,9 +16,22 @@
 
 <!---------------------- BODY 本頁特有元素 style 開始-------------------Javay-->
 <style type="text/css">
-    #content form{
-        float: left;
+    #contentText>div{
+        float: top;
     }
+    #contentText>div>form{
+        float: top;
+        margin-left: 20px;
+        height: 250px;
+        text-align: left;
+        padding-top: 5px;
+    }
+    #errorarea{
+        background-color: rgba(255,247,63,0.6);
+        line-height: 3em;
+    }
+
+
 </style>
 <!--------------------- BODY 本頁特有元素 style 結束-------------------Javay-->
 
@@ -28,46 +41,49 @@
     </div>
     <div id="content">
         <h2>註冊</h2>
-        <div>
-            <% List<String> error = (List<String>) request.getAttribute("errors");
-                if (error != null && error.size() > 0) { %>
-            <div>
 
-                <% for (String msg : error) {%>
-                <p><%= msg%></p>
-                <% } %>
+        <div id="contentText" style="text-align: left;">
+            <div id="errorarea">
+                <% List<String> error = (List<String>) request.getAttribute("errors");
+                    if (error != null && error.size() > 0) { %>
+                <div>
+
+                    <% for (String msg : error) {%>
+                    <p><%= msg%></p>
+                    <% } %>
+
+                </div>
+                <%}%>
 
             </div>
-            <%}%>
-
-        </div>
-        <div id="contentText" style="text-align: left;">
-            <form method="POST" action="register.do">
-                <p><label for="userid">帳號</label>
-                    <input type="text" id="userid" name="id" placeholder="請輸入帳號" required
-                           /></p>
-                <p><label for="username">姓名</label>
-                    <input type="text" id="username" name="username" placeholder="請輸入姓名" required
-                           /></p>
-                <p><label for="email">email</label>
-                    <input type="text" id="email" name="email" placeholder="請輸入email" required/></p>
-                <p><label for="gender">性別</label>
-                    <input type="radio" id="male" name="gender" value="M" /><label for="male" >男</label>
-                    <input type="radio" id="female" name="gender" value="F" /><label for="female">女</label>
-                </p>
-                <p>
-                    <label for="birthday">出生日期:</label>
-                    <input type="date" id="birthday" name="birthday"
-                           value="<%= request.getMethod().equalsIgnoreCase("post") ? request.getParameter("birthday") : ""%>">
-                </p>
-                <p><label for="userpw">密碼 </label><input type="password" id="userpw" name="pw" placeholder="請輸入密碼" minlength="6" maxlength="20"  required/></p>
-                <p><label for="userpwck">　　 </label><input type="password" id="userpwck" name="pwck" placeholder="請再次輸入密碼" required/></p>
-                <label for="checkCode">檢核碼</label>
-                <p><img id="checkcodepic" src="img/check_code.jpg" alt="檢核圖片" /><br>
-                    <input type="button" value="更新" name="updatecode" id="updatecode" onclick="refresh()"/>
-                    <input type="text" id="checkCode" name="checkcode" placeholder="請輸入檢核碼" required /></p>
-                <input type=submit value="確定" />
-            </form>
+            <div>
+                <form method="POST" action="register.do">
+                    <p><label for="userid">帳號</label>
+                        <input type="text" id="userid" name="id" placeholder="請輸入帳號" required
+                               /></p>
+                    <p><label for="username">姓名</label>
+                        <input type="text" id="username" name="username" placeholder="請輸入姓名" required
+                               /></p>
+                    <p><label for="email">email</label>
+                        <input type="text" id="email" name="email" placeholder="請輸入email" required/></p>
+                    <p><label for="gender">性別</label>
+                        <input type="radio" id="male" name="gender" value="M" /><label for="male" >男</label>
+                        <input type="radio" id="female" name="gender" value="F" /><label for="female">女</label>
+                    </p>
+                    <p>
+                        <label for="birthday">出生日期:</label>
+                        <input type="date" id="birthday" name="birthday"
+                               value="<%= request.getMethod().equalsIgnoreCase("post") ? request.getParameter("birthday") : ""%>" required>
+                    </p>
+                    <p><label for="userpw">密碼 </label><input type="password" id="userpw" name="pw" placeholder="請輸入密碼" minlength="6" maxlength="20"  required/></p>
+                    <p><label for="userpwck">　　 </label><input type="password" id="userpwck" name="pwck" placeholder="請再次輸入密碼" required/></p>
+                    <label for="checkCode">檢核碼</label>
+                    <p><img id="checkcodepic" src="img/reg_check_code.jpg" alt="檢核圖片" /><br>
+                        <input type="button" value="更新" name="updatecode" id="updatecode" onclick="refresh()"/>
+                        <input type="text" id="checkCode" name="checkcode" placeholder="請輸入檢核碼" required /></p>
+                    <input type=submit value="確定" />
+                </form>
+            </div>
         </div>
     </div>
 </div>
