@@ -15,9 +15,14 @@
 <% Customer c = (Customer) request.getAttribute("customer");%>
 
 <div id="main">
-    <h1>註冊成功</h1>
-    <div><%= application.getInitParameter("app-name")%></div>
-    <div><%= c == null ? "" : c%></div>
+
+    <div id="content">
+        <h2>註冊成功</h2>
+        <div id="contentText">
+            <div><%= application.getInitParameter("app-name")%></div>
+            <div><%= c == null ? "" : c%></div>
+        </div>
+    </div>
 </div>
 <div id="footer"><%@include  file="/WEB-INF/footer.jsp" %>      </div>
 </body>
