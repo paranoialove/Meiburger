@@ -16,6 +16,8 @@ import java.util.logging.Logger;
  */
 public class Customer {
 
+    private static final DateFormat birthdayFormat = new SimpleDateFormat("yyyy-M-d");
+
     public static final char MALE = 'M';
     public static final char FEMALE = 'F';
     /**
@@ -219,15 +221,24 @@ public class Customer {
         try { //date須拋出例外狀況(函式庫內的DateFormat例外錯誤)
             //DateFormat df = DateFormat.getDateInstance();  //抓取OS時間格式
 
-            date = date.replace('-', '/');
+            date = date.replace('/','-');
             DateFormat df = new SimpleDateFormat("yyyy/M/d");  //自訂日期格式 yyyy/M/d  大小寫有別，請查閱jdk javadoc
-            Date d = df.parse(date);
+            Date d = birthdayFormat.parse(date);
             this.setBirthday(d);//回傳再判斷日期是否早於今天
         } catch (ParseException ex) {
             Logger.getLogger(Customer.class.getName()).log(Level.SEVERE, "日期格式不正確", ex);
             throw new MeiException("日期格式不正確", ex); //除了判斷例外狀況try catch，還須將錯誤拋出
         }
     }
+
+    public String getBirthdayString() {
+        if (this.birthday != null) {
+            return birthdayFormat.format(this.birthday);
+        } else {
+            return "";
+        }
+    }
+    
 
     /**
      * @return the phone
