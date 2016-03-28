@@ -1,3 +1,4 @@
+
 <%@page import="uuu.meiburger.domain.Customer"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"  %>
@@ -13,6 +14,7 @@
         $("#birthday").datepicker({
             changeMonth: true,
             changeYear: true
+            dateFormat: 'yyyy-mm-dd'
         });
     });
     //更新驗證碼
@@ -21,9 +23,6 @@
         image.src = "img/check_code.jpg?get=" + new Date();
     }
 </script>
-
-<% //if (session != null) {        response.sendRedirect(request.getContextPath() + "/login.jsp");    } else {%>
-
 
 
 <div id="main">
@@ -34,14 +33,20 @@
 
             <%
                 List<String> errors = (List<String>) request.getAttribute("errors");
-                if (errors != null && errors.size() > 0) {
+                String finishedEdit = (String) request.getAttribute("finishedEdit");
             %>
             <div id="errorarea">
-                <% for (String msg : errors) {%>
+                <% if (errors != null && errors.size() > 0) {
+                        for (String msg : errors) {%>
                 <li><%=msg%></li>
                     <% } %>
-            </div>
-            <% }%>
+            </div>            
+            <% } else{%>
+            <div id = "edited_finished">
+                <% if (finishedEdit != null) {%>
+                <%=finishedEdit%><%}%>
+            </div >
+            <%}%>
 
             <%
                 Customer c = (Customer) session.getAttribute("user");
@@ -54,11 +59,11 @@
                 </p>
                 <p>
                     <label for="pwd1" > 修改密碼 : </label>
-                    <input type="password" id="pwd1" name="password1" minlength="6" maxlength="20" placeholder="原密碼"  >
+                    <input type="password" id="pwd1" name="password1" minlength="6" maxlength="20" placeholder="原密碼" required >
                 </p>
                 <p>
                     <label for="pwd2" > 確認密碼 : </label>
-                    <input type="password" id="pwd2" name="password2" minlength="6" maxlength="20" placeholder="原密碼" >
+                    <input type="password" id="pwd2" name="password2" minlength="6" maxlength="20" placeholder="原密碼" required >
                 </p>
                 <p>
                     <label for="name" > 修改姓名 : </label>
@@ -75,24 +80,22 @@
                     <input type="radio" id="male" name="gender" value="M" required
                            <%--<%= c != null ? c.getGender() : ""%>--%>
                            <% if (c != null && c.getGender() == 'M') {%>
-                           checked
                            <%}%>
-                           <%= request.getParameter("gender") != null && request.getParameter("gender").charAt(0) == Customer.MALE ? "checked" : ""%>
-                           > <label for="male" > 男 </label>
+                           <%= request.getParameter("gender") != null && request.getParameter("gender").charAt(0) == Customer.MALE ? "checked" : (request.getParameter("gender")==null&& c.getGender()==Customer.MALE?"checked":"")%>
+                           >
+                    <label for="male" > 男 </label>
                     <input type="radio" id="female" name="gender" value="F" required
                            <%--<%= c != null ? c.getGender() : ""%>--%>
                            <% if (c != null && c.getGender() == 'F') {%>
-                           checked
                            <%}%>
-                           <%= request.getParameter("gender") != null && request.getParameter("gender").charAt(0) == Customer.FEMALE ? "checked" : ""%>
-                           > <label for="female" > 女 </label>
+                           <%= request.getParameter("gender") != null && request.getParameter("gender").charAt(0) == Customer.FEMALE ? "checked" : (request.getParameter("gender")==null&& c.getGender()==Customer.FEMALE?"checked":"")%>
+                           >
+                    <label for="female" > 女 </label>
                 </p>
                 <p>
                     <label for="birthday" > 修改生日 : </label>
-                    <!--用預設date的這邊可以不用理我 -->
-                    <input type="text" id="birthday" name="birthday" placeholder="<% if (c != null)%><%= c.getBirthday() !=null?c.getBirthday():"" %> "
-
-                           value="<%= request.getMethod().equalsIgnoreCase("post") ? request.getParameter("birthday") : ""%>">
+                    <input type="date" id="birthday" name="birthday" 
+                           value="<% if (c != null){%><%= request.getParameter("birthday")!=null?request.getParameter("birthday"):(c.getBirthday() !=null?c.getBirthday():"")%><%}%>" required />
                 </p>
                 <p>
                     <label for="phone">修改電話</label>
@@ -121,5 +124,3 @@
 <div id="footer"><%@include  file="/WEB-INF/footer.jsp" %>      </div>
 </body>
 </html>
-
-<%//}%>

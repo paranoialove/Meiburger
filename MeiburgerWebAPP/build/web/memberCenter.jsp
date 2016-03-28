@@ -10,7 +10,7 @@
     <div id="sidebar">
         <div id="sidebarTitle"><h2>側邊欄</h2></div>
         <ul id="sidebarlist">
-            <li><a href="<%=application.getContextPath()%>/memberCenter_edit.jsp">修改會員資料</a></li>
+            <li><a href="<%=application.getContextPath()%>/memberCenterEdit.do">修改會員資料</a></li>
             <li>選擇</li>
             <li>選擇</li>
             <li>選擇</li>

@@ -40,6 +40,7 @@ public class UpdateServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8"); //請求編碼
         ServletContext context = this.getServletContext();//讀取初始化參數
         List<String> errors = new ArrayList<>();
+        String finishedEdit;
 
 //1.接受請求
         HttpSession session = request.getSession(false);
@@ -55,17 +56,18 @@ public class UpdateServlet extends HttpServlet {
         String phone = request.getParameter("phone");
         String address = request.getParameter("address");
         String checkCode = request.getParameter("check_code");
-
+        
+        System.out.println(birthday);
+        
         //給原值處理
         if (name == null || (name = name.trim()) == "") {
             name = c.getName();
         }// name 檢查 如果沒給請求值 就輸入原值
-        if (password1 == null || (password1 = password1.trim()) == "") {
-            password1 = c.getPassword();
-        }
-        if (password2 == null || (password2 = password2.trim()) == "") {
-            password2 = c.getPassword();
-        }
+        
+        if (password1 == null || password1.length() <= 0 && password2 == null || password2.length() <= 0) {
+            errors.add("必須輸入密碼");
+        }        
+        
         if (email == null || (email = email.trim()) == "") {
             email = c.getEmail();
         }
@@ -96,6 +98,7 @@ public class UpdateServlet extends HttpServlet {
 
 //2.呼叫商業邏輯
         if (errors.size() == 0) {
+          
             try {
                 c.setId(id);
                 c.setName(name);
@@ -109,17 +112,18 @@ public class UpdateServlet extends HttpServlet {
                 CustomerService service = new CustomerService();
                 service.update(c);
 
-                //3.1 forward to /register_ok.jsp 產生成功回應
+                //3.1 產生成功回應
+                finishedEdit = "修改成功。";
+                request.setAttribute("finishedEdit",finishedEdit);
                 request.setAttribute("customer", c);
-
-                response.sendRedirect(request.getContextPath() + "/memberCenter_edit");//送出轉交回應
+                response.sendRedirect(request.getContextPath() + "/memberCenterEdit.do");//送出轉交回應
                 return;
 
             } catch (Exception ex) {
-                System.out.println("無法登入" + ex);
+                System.out.println("無法修改" + ex);
                 if (ex.getCause() != null) {
-                    this.log("無法登入", ex);
-                    errors.add("無法登入，請聯絡系統管理員 !");
+                    this.log("無法修改", ex);
+                    errors.add("無法修改，請聯絡系統管理員 !");
                 } else {
                     errors.add(ex.getMessage());
                 }
@@ -128,7 +132,7 @@ public class UpdateServlet extends HttpServlet {
         //3.2失敗回應
         request.setAttribute("errors", errors);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/update.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/memberCenter_edit.jsp");
         dispatcher.forward(request, response);
 
     }
